@@ -36,6 +36,7 @@ function ilfate_init() {
   $('.tip-left').tooltip({placement:'left'});
   $('.tip-right').tooltip({placement:'right'});
   $('.label-stars').starred();
+  $('.rounded_block').roundedBlock();
 }
 $(document).ready(function(){
   ilfate_init();
@@ -79,5 +80,38 @@ $.fn.starred = function()
       
     }
 	});
+  
+};
+$.fn.roundedBlock = function() 
+{
+  $(this).each(function(event, el){
+    el = $(el);
+    el.bind('mousedown', function(){
+      $(this).addClass('mouse_down');
+    })
+    el.bind('mouseenter', function(){
+      $(this).find('.text').bounce();
+      $(this).find('img').animate({'opacity':0.4},150);
+    })
+    el.bind('mouseleave', function(){
+      $(this).find('img').animate({'opacity':0.2},150);
+      $(this).removeClass('mouse_down');
+    })
+    .bind('mouseup', function(){
+      $(this).removeClass('mouse_down');
+    });
+	});
+};
+
+$.fn.bounce = function() 
+{
+  var n = 4;
+  var intence = 2;
+  $(this).stop(true, true);
+  for(var i = 0; i <= n; i++) {
+    $(this).animate({
+      'line-height':((i%2===0 ? 270 + (n-i)*intence : 270 - (n-i)*intence)+'px')
+    },(80+i*5))
+  }
   
 };

@@ -29,7 +29,7 @@
     <delete dir="${ilfate.clonedir.resolved}" includeemptydirs="true" verbose="true" failonerror="false" />
     <mkdir  dir="${ilfate.clonedir.resolved}" />
     
-    <gitclone repository="https://github.com/ilfate/ilfate_php_engine.git" targetPath="${ilfate.clonedir.resolved}" />
+    <gitclone repository="https://github.com/ilfate/ilfate.net.git" targetPath="${ilfate.clonedir.resolved}" />
 
      <echo msg="Setting configuration..." />
 
