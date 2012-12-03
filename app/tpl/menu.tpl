@@ -21,8 +21,8 @@
         </div>
       <? } else { ?>
         <div class="btn-group pull-right">
-          <a href="#ilfateModal" data-remote="<?= Helper::urlAjax(array('Auth', 'logInForm')) ?>" role="button" data-toggle="modal" class="btn btn-primary">Log in</a>
-          <a href="#ilfateModal" data-remote="<?= Helper::urlAjax(array('Auth', 'signUpForm')) ?>" role="button" data-toggle="modal" class="btn btn-success">Sign up</a>
+          <a href="#ilfateModal" data-remote="<?= Helper::urlAjax('Auth', 'logInForm') ?>" role="button" data-toggle="modal" class="btn btn-primary">Log in</a>
+          <a href="#ilfateModal" data-remote="<?= Helper::urlAjax('Auth', 'signUpForm') ?>" role="button" data-toggle="modal" class="btn btn-success">Sign up</a>
         </div>
      
         
