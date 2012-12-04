@@ -9,7 +9,7 @@
 </div>
 
 <div class="row show-grid">
-  <div class="span3 offset1">
+  <div class="span3 offset1 main-page-block">
     <a href="<?=Helper::url('Cv')?>" class="rounded_block_link">
       <?= $this->inc('interface/rounded_block.tpl', array('text' => 'CV', 'background' => HTTP_ROOT.'images/ilfate.png')) ?>
       <? /*
@@ -19,7 +19,7 @@
       </div> */?>
     </a>
   </div>
-  <div class="span3 offset1">
+  <div class="span3 offset1 main-page-block">
 	<a href="<?=Helper::url('Main', 'code')?>" class="rounded_block_link">
       <?= $this->inc('interface/rounded_block.tpl', array('text' => 'Code', 'background' => HTTP_ROOT.'images/php.jpg')) ?>
     </a>
@@ -31,7 +31,7 @@
   </div>
 </div>
 <div class="row show-grid">
-  <div class="span3 offset1">
+  <div class="span3 offset1 main-page-block">
     <a href="<?=Helper::url('Game_Main')?>" class="rounded_block_link" data-target=".main-content-well">
       <?= $this->inc('interface/rounded_block.tpl', array('text' => 'Game', 'background' => HTTP_ROOT.'images/game/tank1_s.jpg')) ?>
     </a>
