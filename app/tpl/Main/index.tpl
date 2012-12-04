@@ -37,18 +37,11 @@
     </a>
   </div>
   <div class="span3 offset1 main-page-block" >
-    <a href="<?=Helper::url('Game_Main')?>" class="rounded_block_link" data-target=".main-content-well">
-      <?= $this->inc('interface/rounded_block.tpl', array('text' => 'Photo')) ?>
+    <a href="<?=Helper::url('Main', 'photo')?>" class="rounded_block_link" data-target=".main-content-well">
+      <?= $this->inc('interface/rounded_block.tpl', array('text' => 'Photo', 'background' => HTTP_ROOT.'images/photo2.jpg')) ?>
     </a>
   </div>
 </div>
-<div class="row show-grid">
-  <div class="span7 offset1" style="height: 270px;">
-    <a href="<?=Helper::url('Game_Main')?>" class="rounded_block_link" data-target=".main-content-well">
-      <?= $this->inc('interface/rounded_block.tpl', array('text' => 'Game', 'background' => HTTP_ROOT.'images/game/tank1_s.jpg')) ?>
-    </a>
-  </div>
-  
-</div>
+
 
 

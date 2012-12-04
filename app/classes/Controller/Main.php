@@ -98,7 +98,20 @@ class Controller_Main extends Controller {
   {
     return array(
       'tpl' => 'Main/code.tpl',
-	);
+	  );
+  }
+  public function codeEngine()
+  {
+    return array(
+      'tpl' => 'Main/codeEngine.tpl',
+	  );
+  }
+  
+  public function photo()
+  {
+    return array(
+      'tpl' => 'Main/photo.tpl',
+	  );
   }
 }
 

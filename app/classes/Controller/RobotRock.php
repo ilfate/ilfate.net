@@ -15,7 +15,7 @@ class Controller_RobotRock extends Controller {
   
   public function index() 
   {
-    Service_Layout::addSideBar('RobotRock', 'info');
+    Service_Sidebar::addSideBar('RobotRock', 'info');
     return array(
       'layout' => array('html.tpl', 'RobotRock/head.tpl', 'layout.tpl')
     ); 

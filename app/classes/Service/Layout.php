@@ -29,8 +29,6 @@ class Service_Layout extends CoreService
   
   private static $default_menu = 'main';
   
-  private static $side_bars = array();
-  
   public static function preExecute() 
   {
     if(Request::getExecutingMode() == Request::EXECUTE_MODE_HTTP)
@@ -78,24 +76,6 @@ class Service_Layout extends CoreService
       }
     }
   } 
-  
-  public static function getSideBar()
-  {
-    $return = '';
-    if(self::$side_bars)
-    {
-      foreach (self::$side_bars as $route)
-      {
-        $return .= Helper::exe($route[0], $route[1]);
-      }
-    }
-    return $return;
-  }
-  
-  public static function addSideBar($class, $method)
-  {
-    self::$side_bars[] = array($class, $method);
-  }
   
   public static function postExecute() 
   {
