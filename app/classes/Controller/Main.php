@@ -90,8 +90,15 @@ class Controller_Main extends Controller {
   
   public function flush()
   {
-  Cache::flush();
-  Helper::redirect('Main', 'index');
+    Cache::flush();
+    Helper::redirect('Main', 'index');
+  }
+  
+  public function code()
+  {
+    return array(
+      'tpl' => 'Main/code.tpl',
+	);
   }
 }
 

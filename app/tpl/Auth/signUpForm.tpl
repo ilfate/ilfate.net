@@ -1,6 +1,6 @@
 
 
-<form class="form-signin" method="post" action="?Auth=signUp">
+<form class="form-signin" method="post" action="<?= Helper::url('Auth', 'signUp') ?>">
   <h2 class="form-signin-heading move-to-header">Please sign up</h2>
   
   <input type="text" placeholder="Email address" name="email" class="input-block-level tip-left" rel="tooltip" title="Your email will not be shown to public">

@@ -107,10 +107,11 @@ $.fn.bounce = function()
 {
   var n = 4;
   var intence = 2;
+  var height = $(this).height();
   $(this).stop(true, true);
   for(var i = 0; i <= n; i++) {
     $(this).animate({
-      'line-height':((i%2===0 ? 270 + (n-i)*intence : 270 - (n-i)*intence)+'px')
+      'line-height':((i%2===0 ? height + (n-i)*intence : height - (n-i)*intence)+'px')
     },(80+i*5))
   }
   

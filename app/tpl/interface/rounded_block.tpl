@@ -1,11 +1,13 @@
 
 <div class="rounded_block" >
-  <div class="text">
+  <span class="text">
    <?= $text ?>
-  </div>
+  </span>
   <? if(isset($background)) { ?> 
   
-  <img src="<?= $background ?>" width="300px" height="300px">
-  <? } ?>
+  <img src="<?= $background ?>">
+  <? } else { ?>
+  <div class="back"></div>
+  <? }  ?>
   
 </div>
