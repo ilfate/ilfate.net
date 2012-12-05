@@ -26,7 +26,7 @@ class CoreLogger
   
   private static $is_file_logging_enabled = true;
   
-  private static $log_file = 'logs/CoreLog';
+  private static $log_file = '../logs/CoreLog';
   
   private static $is_day_logging = false;
   
