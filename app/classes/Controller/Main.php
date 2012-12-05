@@ -19,7 +19,7 @@ class Controller_Main extends Controller {
    */
   public function index() 
   {
-    self::cache('aaa', 'bbb', 'ccc');
+    //self::cache('aaa', 'bbb', 'ccc');
     
         //Model_User::createUserWithEmail('email', 'pass', '$name');
 	    
@@ -73,7 +73,28 @@ class Controller_Main extends Controller {
    */
   public function randomBanner()
   {
+    $random_elements = array(
+      array(
+        'url'   => Helper::url('Main', 'codeEngine'),
+        'text'  => 'Ilfate PHP framework',
+        'image' => 'images/php2.jpg'
+      ),
+      array(
+        'url'   => Helper::url('Cv'),
+        'text'  => 'Ilya Rubinchik',
+        'image' => 'images/ilfate.png'
+      ),
+      array(
+        'url'   => Helper::url('Main', 'codeStarred'),
+        'text'  => 'Starred label',
+        'image' => 'images/js2.jpg'
+      ),
+    );
+    $data = $random_elements[array_rand($random_elements)];
     return array(
+      'url' => $data['url'],
+      'text' => $data['text'],
+      'image' => $data['image'],
       'tpl' => 'Main/randomBanner.tpl'
     );
   }
@@ -104,6 +125,12 @@ class Controller_Main extends Controller {
   {
     return array(
       'tpl' => 'Main/codeEngine.tpl',
+	  );
+  }
+  public function codeStarred()
+  {
+    return array(
+      'tpl' => 'Main/codeStarred.tpl',
 	  );
   }
   

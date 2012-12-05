@@ -98,55 +98,16 @@ body {
 
 
 /**** label-stars ****/
-.label-stars {
-	min-width: 72px;
-  text-align: center;
-}
+.label-stars { min-width: 72px; text-align: center; }
 
-.before-stars {
-  display: inline-block;
-  width:72px;
-  height: 20px;
-  display:none;
-  position: absolute;
-  background-position: 0px 0px;
-  background-repeat: no-repeat;
-  padding: 2px 4px;
-  border-radius: 3px 3px 3px 3px;
-  margin: 2px 0 0 0;
-  min-width: 72px;
-}
+.before-stars { display:none; position: absolute; margin: 2px 0 0 0; min-width: 72px; }
 
-.container-stars:hover .before-stars{
-	display:block;
-}
-.container-stars {
-  display:inline-block;
-  min-width: 72px;
-}
+.container-stars:hover .before-stars{ display:block; }
+.container-stars { display:inline-block; }
 
-.star{
-  float:left;
-  width: 12.5%;
-  padding-left: 12.5%;
-  height: 16px;
-  margin: -1px 0 0 0;
-}
-.under-star {
-  background-color: #F89406;
-  width: 18px;
-  height: inherit;
-  position: absolute;
-  margin: 0 0 0 -9px; /* 9px = half image width */
-}
-.img-star {
-  background-image: url('../images/star.png');
-  background-repeat: no-repeat;
-  width: 18px;
-  height: inherit;
-  position: absolute;
-  margin: 0 0 0 -9px; /* 9px = half image width */
-}
+.star{ float:left; width: 12.5%; padding-left: 12.5%; height: 16px; margin: -1px 0 0 0; }
+.under-star { background-color: #F89406; width: 18px; height: inherit; position: absolute; margin: 0 0 0 -9px; /* 9px = half image width */ }
+.img-star { background-image: url('../images/star.png'); width: 18px; height: inherit; position: absolute; margin: 0 0 0 -9px; /* 9px = half image width */ }
 
 /****  rounded_block  ****/
 
@@ -197,6 +158,10 @@ a.rounded_block_link{
 .CVpage > .row { padding-left:9px; }
 .like-h1 { line-height: 38px; margin: 10px; }
 .cv-certificate { margin-right: 20px; }
+
+/**** Sidebar ****/
+
+.banner-title{ text-align: center; }
 /***************************************************** ***************************/
 
 .main-page-block{
@@ -213,11 +178,10 @@ a.rounded_block_link{
 	font-size: 60px;
 }
 .banner-block {
-	height: 170px;
-	width: 100%;
+	height: 200px;
 	max-width: 200px;
-	min-width: 150px;
-	
+	min-width: 200px;
+	margin: 0 auto;
 }
 .banner-block .text {
 	font-size: 20px;

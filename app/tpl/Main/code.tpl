@@ -17,7 +17,7 @@
 </div>
 <div class="row show-grid">
   <div class="span7 offset1 code-page-block" >
-    <a href="<?=Helper::url('Game_Main')?>" class="rounded_block_link" data-target=".main-content-well">
+    <a href="<?=Helper::url('Main', 'codeStarred')?>" class="rounded_block_link" data-target=".main-content-well">
       <?= $this->inc('interface/rounded_block.tpl', array('text' => 'Starred label', 'background' => HTTP_ROOT.'images/js3.jpg')) ?>
     </a>
   </div>

@@ -51,18 +51,14 @@ function info(data)
 }
 
 
-
-
 $.fn.starred = function() 
 {
-    
   $(this).each(function(event, el){
     el = $(el);
     var value = el.data('value');
     if(el.prev().hasClass('before-stars')) return ;
-    el.before('<div class="container-stars"></div>');
-    el.appendTo(el.prev());
-    el.before('<div class="before-stars label"></div>');
+    el.before('<div class="container-stars"></div>')
+    .appendTo(el.prev()).before('<div class="before-stars label"></div>');
     
     el.prev().css({width: el.css('width'), height : el.css('height')});
     var star_div = '<div class="star"><div class="under-star"></div><div class="img-star"></div></div>';
@@ -77,11 +73,10 @@ $.fn.starred = function()
           star.width(Math.floor(((value - i*25)/25)*18) + 'px');
         }
       }
-      
     }
 	});
-  
 };
+
 $.fn.roundedBlock = function() 
 {
   $(this).each(function(event, el){

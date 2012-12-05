@@ -1,8 +1,8 @@
 
-
-  <div class="span3 banner-block" >
-    <a href="<?=Helper::url('Main', 'codeEngine')?>" class="rounded_block_link" data-target=".main-content-well">
-      <?= $this->inc('interface/rounded_block.tpl', array('text' => 'Ilfate PHP framework', 'background' => HTTP_ROOT.'images/php2.jpg')) ?>
+<div class="banner-title"><h4>This can be interesting:</h4></div>
+  <div class=" banner-block" >
+    <a href="<?=$url?>" class="rounded_block_link" data-target=".main-content-well">
+      <?= $this->inc('interface/rounded_block.tpl', array('text' => $text, 'background' => HTTP_ROOT.$image)) ?>
     </a>
   </div>
 
