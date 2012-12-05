@@ -19,7 +19,8 @@ return array(
 		),
       
     'log_sql' => true,
-    'is_dev'  => true
+    'is_dev'  => true,
+    'logs_path' => '/home/ilfate/www/php/ilfate.net/logs/'
       
   ),
   'CoreProvider_PDOmysql' => array(

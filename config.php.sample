@@ -17,7 +17,8 @@ return array(
 		),
       
     'log_sql' => %%log_sql%%,
-    'is_dev'  => %%is_dev%%
+    'is_dev'  => %%is_dev%%,
+    'logs_path' => %%logs_path%%
       
   ),
   'CoreProvider_PDOmysql' => array(

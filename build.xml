@@ -41,6 +41,7 @@
                         <token key="log_sql" value="${conf.log_sql}" />
                         <token key="is_dev" value="${conf.is_dev}" />
                         <token key="db_pass" value="${conf.db.pass}" />
+                        <token key="logs_path" value="${conf.logs_path}" />
                 </replacetokens>
           </filterchain>
     </copy>
