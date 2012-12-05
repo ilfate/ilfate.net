@@ -14,7 +14,7 @@ return array(
     'View'                       => array(
 			'abstract'      => 'CoreView',
 			'http'          => 'CoreView_Http',
-			'http_ajax'          => 'CoreView_Http',
+			'http_ajax'     => 'CoreView_Http',
 			'subquery'      => 'CoreView_Http',
 		),
       
