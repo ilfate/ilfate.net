@@ -38,6 +38,13 @@ class Controller_Error extends Controller {
     );
   }
   
+  public function ie() {
+    return array(
+      'error_num' => 500,
+      'tpl' => 'Error/iePage.tpl'
+    );
+  }
+  
   
 }
 

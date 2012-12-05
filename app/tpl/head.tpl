@@ -9,7 +9,11 @@
   <link rel="stylesheet" href="<?=HTTP_ROOT?>css/main.css" type="text/css" />
   
   <link rel="shortcut icon" href="<?=HTTP_ROOT?>images/favicon.ico" type="image/x-icon"/>
-  
+  <meta content="ilfate ilya rubinchik ilya_rubinchik php web developer" name="keywords">
+  <meta content="Rubinchik Ilya`s personal site" name="description">
+  <meta property="og:site_name" content="Ilfate">
+  <meta property="og:title" content="Ilfate - Rubinchik Ilya. Personal Site.">
+  <meta property="og:image" content="<?=HTTP_ROOT?>images/ilfate.png">
 </head>
 <body>
   

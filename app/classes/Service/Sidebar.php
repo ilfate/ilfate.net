@@ -14,7 +14,8 @@
 class Service_Sidebar extends CoreService
 {
   const PRIORITY = 66;
-  
+  const DEFAULT_SIDEBAR_CLASS  = 'Main';
+  const DEFAULT_SIDEBAR_METHOD = 'randomBanner';
   
   private static $side_bars = array();
   
@@ -33,15 +34,22 @@ class Service_Sidebar extends CoreService
     {
       foreach (self::$side_bars as $route)
       {
-        $return .= Helper::exe($route[0], $route[1]);
+		if(!$route['is_ajax'])
+		{
+	      $return .= Helper::exe($route['class'], $route['method']);
+		} else {
+		  $return .= Helper::exeAjax($route['class'], $route['method']);
+		}
       }
-    }
+    } else {
+      $return .= Helper::exeAjax(self::DEFAULT_SIDEBAR_CLASS, self::DEFAULT_SIDEBAR_METHOD);
+	}
     return $return;
   }
   
-  public static function addSideBar($class, $method)
+  public static function addSideBar($class, $method, $is_ajax = false)
   {
-    self::$side_bars[] = array($class, $method);
+    self::$side_bars[] = array('class' => $class, 'method' => $method, 'is_ajax' => $is_ajax);
   }
   
   public static function postExecute() 

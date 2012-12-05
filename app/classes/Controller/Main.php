@@ -71,10 +71,10 @@ class Controller_Main extends Controller {
    * 
    * @return type 
    */
-  public function _page()
+  public function randomBanner()
   {
     return array(
-      'tpl' => 'Main/index.tpl'
+      'tpl' => 'Main/randomBanner.tpl'
     );
   }
   

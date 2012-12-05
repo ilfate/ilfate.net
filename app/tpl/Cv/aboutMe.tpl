@@ -3,6 +3,7 @@
 <?= Helper::exe('Main', 'Menu', array('awd')); ?>
 <?= Helper::exe('Logger', 'index'); ?>
 */?>
+<div class="CVpage">
 <div class="row">
   <div class="hero-unit span5">
     <h1>Rubinchik Ilya - CV</h1>
@@ -105,6 +106,7 @@
         Github project: <a target="_blank" href="https://github.com/ilfate/ilfate_php_engine" >http://github.com/ilfate/ilfate_php_engine</a>
     </div>
   </div>
+</div>
 </div>
 
 

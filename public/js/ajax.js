@@ -25,6 +25,12 @@ Ajax = function() {
   this.html = function(url, target, options)
   {
     if(!options) options = {};
+	if(url.indexOf('?') == -1)
+    {
+		url = url + '?__html=true';
+	} else {
+		url = url + '&__html=true';
+	}
     options.url = url;
     options.type = "GET";
     options.target = target;

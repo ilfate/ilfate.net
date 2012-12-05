@@ -32,16 +32,11 @@ body {
 
 .main-content-well, .main-content-well-side {
   min-height: 700px;
-  padding: 9px 9px 9px 18px;
 }
 
 .well, .navbar {
   background: url('../images/grid.png');
   box-shadow: 0 0 6px 0 #384541;
-}
-
-.cv-certificate {
-	margin-right: 20px;
 }
 
 .table-centrated {}
@@ -95,13 +90,18 @@ body {
   border-radius: 36px 36px 36px 36px;
 }
 
+/**** show-grid ****/
+.show-grid {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 
 /**** label-stars ****/
 .label-stars {
 	min-width: 72px;
   text-align: center;
 }
-
 
 .before-stars {
   display: inline-block;
@@ -132,7 +132,6 @@ body {
   height: 16px;
   margin: -1px 0 0 0;
 }
-
 .under-star {
   background-color: #F89406;
   width: 18px;
@@ -148,19 +147,6 @@ body {
   position: absolute;
   margin: 0 0 0 -9px; /* 9px = half image width */
 }
-
-/**** like-h1 ****/
-.like-h1{
-  line-height: 38px;
-  margin: 10px;
-}
-
-/**** show-grid ****/
-.show-grid {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
 
 /****  rounded_block  ****/
 
@@ -206,15 +192,35 @@ a.rounded_block_link{
   box-shadow: inset 0px 5px 6px rgba(0,0,0,0.5);
 }
 
+/**** CV page ****/
 
+.CVpage > .row { padding-left:9px; }
+.like-h1 { line-height: 38px; margin: 10px; }
+.cv-certificate { margin-right: 20px; }
 /***************************************************** ***************************/
 
 .main-page-block{
 	height: 270px;
+	min-width:270px;
+	max-width:270px;
 }
 .code-page-block {
 	height: 200px;
+	max-width: 700px;
+	min-width: 580px;
 }
 .code-page-block .text {
 	font-size: 60px;
+}
+.banner-block {
+	height: 170px;
+	width: 100%;
+	max-width: 200px;
+	min-width: 150px;
+	
+}
+.banner-block .text {
+	font-size: 20px;
+	line-height: 20px;
+	height: 20px;
 }

@@ -8,11 +8,13 @@ return array(
       'abstract'      => 'CoreResponse',
       'http'          => 'CoreResponse_Http',
       'subquery'      => 'CoreResponse_Http',
-      'ajax'          => 'CoreResponse_HttpAjax',
+      'ajax'          => 'CoreResponse_Ajax',
+      'http_ajax'     => 'CoreResponse_HttpAjax',
 		),
     'View'                       => array(
 			'abstract'      => 'CoreView',
 			'http'          => 'CoreView_Http',
+			'http_ajax'          => 'CoreView_Http',
 			'subquery'      => 'CoreView_Http',
 		),
       
