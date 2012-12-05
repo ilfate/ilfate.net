@@ -126,7 +126,7 @@ class Core {
       // here we execute services AFTER main content
       self::$serviceExecuter->callPostServices();
     } catch (Exception $e) {
-      Logger::dump($e->getMessage(), 'file', 'logs/CoreError.log');
+      Logger::dump($e->getMessage(), 'file', 'CoreError.log');
       if(self::getConfig('is_dev')) 
       {
         throw $e;

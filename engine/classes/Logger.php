@@ -27,6 +27,7 @@ class CoreLogger
   private static $is_file_logging_enabled = true;
   
   private static $log_file = 'CoreLog.log';
+  private static $log_path = '';
   
   private static $is_day_logging = false;
   
@@ -50,7 +51,7 @@ class CoreLogger
   
   public static function __staticConstruct() {
     self::$is_log_sql = Core::getConfig('log_sql');
-    self::$log_file = Core::getConfig('logs_path') . self::$log_file;
+    self::$log_path = Core::getConfig('logs_path');
     if(self::$is_log_sql) 
     {
       self::$sql_logger = new CoreLogger_Sql();
@@ -159,7 +160,8 @@ class CoreLogger
     $content = ob_get_clean();
     
     if(!$file) $file = self::$log_file;
-    if(self::$is_day_logging) $file .= '_' . date('Ymd');
+    $file = self::$log_path . $file;
+    
     file_put_contents(
       $file, 
       "\n-----------------------------" . date('d.m.Y H:i:s') . "-----------------------------\n" . $content . "\n", 
