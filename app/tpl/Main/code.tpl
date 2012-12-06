@@ -1,11 +1,6 @@
 
-<? /*
-<?= Helper::exe('Main', 'Menu', array('awd')); ?>
-<?= Helper::exe('Logger', 'index'); ?>
-*/?>
-
-<div class="hero-unit">
-  <h1>Here you may find some interesting open-source code!</h1>
+<div class="page-header">
+  <h1>Code <small>Open-source! Feel free to use!</small></h1>
 </div>
 
 <div class="row show-grid">

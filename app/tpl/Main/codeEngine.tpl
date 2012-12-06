@@ -4,8 +4,8 @@
 <?= Helper::exe('Logger', 'index'); ?>
 */?>
 
-<div class="hero-unit">
-  <h1>Ilfate PHP framework!</h1>
+<div class="page-header">
+  <h1>Ilfate PHP framework <small>Micro-framework. Fast. Simple. </small></h1>
 </div>
 
 <div class="row">
