@@ -19,7 +19,9 @@
     I will give <span class="label label-stars" data-value="88">Tirion Lannister</span> three and half star!
     <span class="label label-stars" data-value="12">Sansa Stark</span> will get half of a star from me.
     And <span class="label label-stars" data-value="59">Jaime Lannister</span> will stand with his two and a quarter of star for being so ambiguous.<br>
-    You can rang a <span class="label label-stars" data-value="38">small</span> word or a <span class="label label-stars" data-value="90">very-very-very really big one</span>!
+    You can rang a <span class="label label-stars" data-value="38">small</span> word or a <span class="label label-stars" data-value="90">very-very-very really big one</span>!<br>
+	<br>
+	An example could be found at <a href="<?= Helper::url('Cv', 'skills')?>" >my skills page</a>.
     </p>
     <br>
     <h3>How it works:</h3>
