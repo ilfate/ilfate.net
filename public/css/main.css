@@ -190,3 +190,11 @@ a.rounded_block_link{
 	line-height: 20px;
 	height: 20px;
 }
+
+
+/**** ajax load ****/
+
+.ajax_load{
+  min-width: 150px;
+  min-height: 150px;
+}

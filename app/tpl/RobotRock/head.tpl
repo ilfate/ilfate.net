@@ -24,6 +24,7 @@
   <script type="text/javascript" src="<?=HTTP_ROOT?>js/jquery-1.8.2.min.js"></script>
   <script type="text/javascript" src="<?=HTTP_ROOT?>bootstrap/js/bootstrap.min.js"></script>
   
+  <script type="text/javascript" src="<?=HTTP_ROOT?>js/spin.js"></script>
   <script type="text/javascript" src="<?=HTTP_ROOT?>js/events.js"></script>
   
   <script type="text/javascript" src="<?=HTTP_ROOT?>js/index.js"></script>

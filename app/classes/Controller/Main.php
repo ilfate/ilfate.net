@@ -89,6 +89,11 @@ class Controller_Main extends Controller {
         'text'  => 'Starred label',
         'image' => 'images/js2.jpg'
       ),
+      array(
+        'url'   => Helper::url('RobotRock'),
+        'text'  => 'RobotRock',
+        'image' => 'images/game/tank4-2.jpg'
+      ),
     );
     $data = $random_elements[array_rand($random_elements)];
     return array(
