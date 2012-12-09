@@ -13,7 +13,7 @@
     ilfate@gmail.com<br>
     Skype: illidanfate<br>
     Phone: +7 (905) 713-67-48<br>
-  <a href="<?= HTTP_ROOT ?>Rubinchik_Ilya.pdf">Download CV</a>
+  <a target="_blank" href="<?= HTTP_ROOT ?>Rubinchik_Ilya.pdf">Download CV</a>
   </div>
 </div>
 
