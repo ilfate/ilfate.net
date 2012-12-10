@@ -1,17 +1,18 @@
+<?= Csrf::createInput() ?>
+<?= $this->render('menu.tpl') ?>
 
-<? /*
-<?= Helper::exe('Main', 'Menu', array('awd')); ?>
-<?= Helper::exe('Logger', 'index'); ?>
-*/?>
 
-<div class="hero-unit">
-  <h1>Photo page is not ready yet!</h1>
-</div>
 
-<div class="row">
-  <div class="span7 offset1">
-    
+<div class="container main">
+  <div class="row">
+    <div class="span12">
+      <div class="main-content-well well well-small ">
+      <?= $content ?>
+      </div>
+    </div>
+
   </div>
 </div>
 
-
+<?= $this->render('included_templates/main.tpl') ?>
+<?= Js::getHtml() ?>

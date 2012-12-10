@@ -164,6 +164,15 @@ a.rounded_block_link{
 /**** Sidebar ****/
 
 .banner-title{ text-align: center; }
+
+
+/**** photo-gallery ****/
+
+.photo-gallery {margin-left: 30px;}
+.photo-gallery .photo{ height: 170px; float:left; margin: 1px; }
+.photo-gallery .photo img {height: 100%; width: auto;}
+.photo_show {position: absolute; top:200px; left:50%; width:400px; height:auto; margin: 0 0 0 -200px; display:none}
+
 /***************************************************** ***************************/
 
 .main-page-block{
@@ -197,4 +206,6 @@ a.rounded_block_link{
 .ajax_load{
   min-width: 150px;
   min-height: 150px;
+/*  background-image: url(../images/loading.gif);
+  background-repeat: no-repeat;*/
 }

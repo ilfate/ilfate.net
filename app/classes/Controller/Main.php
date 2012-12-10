@@ -82,7 +82,7 @@ class Controller_Main extends Controller {
       array(
         'url'   => Helper::url('Cv'),
         'text'  => 'Ilya Rubinchik',
-        'image' => '/images/ilfate.png'
+        'image' => '/images/my/ilfate.png'
       ),
       array(
         'url'   => Helper::url('Main', 'codeStarred'),
@@ -142,7 +142,25 @@ class Controller_Main extends Controller {
   public function photo()
   {
     return array(
-      'tpl' => 'Main/photo.tpl',
+      'images_gallery' => array(
+          '/images/my/ilfate.png',
+          '/images/my/ilfate2.jpg',
+          '/images/my/tu1.jpg',
+          '/images/my/tu2.jpg',
+          '/images/my/is1.jpg',
+          '/images/my/me1.jpg',
+          '/images/my/we1.jpg',
+          '/images/my/tu1.jpg',
+          '/images/my/tu2.jpg',
+          '/images/my/is1.jpg',
+          '/images/my/ilfate.png',
+          '/images/my/we1.jpg',
+          '/images/my/tu1.jpg',
+          '/images/my/me1.jpg',
+          '/images/my/is1.jpg',
+      ),
+      'tpl' => 'Main/photo_content.tpl',
+      'layout' => array('html.tpl', 'head.tpl', 'Main/photo.tpl')
 	  );
   }
 }

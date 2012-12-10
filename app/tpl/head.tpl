@@ -8,19 +8,28 @@
   
   <link rel="stylesheet" href="/css/main.css" type="text/css" />
   
+<!--  <link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">-->
+  
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+  
   <meta content="ilfate ilya rubinchik ilya_rubinchik php web developer" name="keywords">
   <meta content="Rubinchik Ilya`s personal site" name="description">
   <meta property="og:site_name" content="Ilfate">
   <meta property="og:title" content="Ilfate - Rubinchik Ilya. Personal Site.">
   <meta property="og:image" content="/images/ilfate.png">
+  
 </head>
 <body>
   
   <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
   <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
   
+<!--  <script type="text/javascript" src="/js/bootstrap-image-gallery.min.js"></script>
+  <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>-->
+  
   <script type="text/javascript" src="/js/spin.js"></script>
+  <script type="text/javascript" src="/js/scroll.js"></script>
   <script type="text/javascript" src="/js/events.js"></script>
   
   <script type="text/javascript" src="/js/index.js"></script>
