@@ -77,22 +77,22 @@ class Controller_Main extends Controller {
       array(
         'url'   => Helper::url('Main', 'codeEngine'),
         'text'  => 'Ilfate PHP framework',
-        'image' => 'images/php2.jpg'
+        'image' => '/images/php2.jpg'
       ),
       array(
         'url'   => Helper::url('Cv'),
         'text'  => 'Ilya Rubinchik',
-        'image' => 'images/ilfate.png'
+        'image' => '/images/ilfate.png'
       ),
       array(
         'url'   => Helper::url('Main', 'codeStarred'),
         'text'  => 'Starred label',
-        'image' => 'images/js2.jpg'
+        'image' => '/images/js2.jpg'
       ),
       array(
         'url'   => Helper::url('RobotRock'),
         'text'  => 'RobotRock',
-        'image' => 'images/game/tank4-2.jpg'
+        'image' => '/images/game/tank4-2.jpg'
       ),
     );
     $data = $random_elements[array_rand($random_elements)];

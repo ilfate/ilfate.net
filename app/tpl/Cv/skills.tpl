@@ -2,10 +2,10 @@
 
 <div class="" >
   <pre>
-    <img src="<?=HTTP_ROOT?>images/star_pic.png"> - I have work experience with this technic.
-    <img src="<?=HTTP_ROOT?>images/star_pic.png"><img src="<?=HTTP_ROOT?>images/star_pic.png"> - I know a lot about this technic.
-    <img src="<?=HTTP_ROOT?>images/star_pic.png"><img src="<?=HTTP_ROOT?>images/star_pic.png"><img src="<?=HTTP_ROOT?>images/star_pic.png"> - I im very good with this technic.
-    <img src="<?=HTTP_ROOT?>images/star_pic.png"><img src="<?=HTTP_ROOT?>images/star_pic.png"><img src="<?=HTTP_ROOT?>images/star_pic.png"><img src="<?=HTTP_ROOT?>images/star_pic.png"> - This technic is my primary skill. </pre>
+    <img src="/images/star_pic.png"> - I have work experience with this technic.
+    <img src="/images/star_pic.png"><img src="/images/star_pic.png"> - I know a lot about this technic.
+    <img src="/images/star_pic.png"><img src="/images/star_pic.png"><img src="/images/star_pic.png"> - I im very good with this technic.
+    <img src="/images/star_pic.png"><img src="/images/star_pic.png"><img src="/images/star_pic.png"><img src="/images/star_pic.png"> - This technic is my primary skill. </pre>
   <!-- </pre> --> 
 </div>
 
