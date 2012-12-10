@@ -79,19 +79,19 @@
         I`m developing high load back-end. Responsible for network`s API and refactoring parts of core.<br>
         <span class="text-info">PHP + Mysql + Nginx</span>
       <h3>Leading Developer</h3>
-        <a target="_blank" href="http://www.ddestiny.ru">Destiny Devopment</a> - GameDev company that specialize on Browser games<br> 
+        <a target="_blank" href="http://www.ddestiny.ru">Destiny Devopment</a> - A GameDev company that specializes on Browser games<br> 
         Septeber 2011 - August 2012. Moscow<br>
-        Leading developer on a browser game. I had created whole project structure and developed most important parts of game logic.<br>
+        Leading developer on a browser game. I created whole project structure and developed most important parts of game logic.<br>
         <span class="text-info">PHP + Mysql + Nginx</span>
       <h3>Leading Specialist (PHP)</h3>
-        <a target="_blank" href="http://www.prognoz.ru">PROGNOZ</a> - Huge company that fills orders for government and banking<br>
+        <a target="_blank" href="http://www.prognoz.ru">PROGNOZ</a> - A huge company that fills orders for government and banking<br>
         August 2010 - September 2011. Moscow<br>
-        Creating and supporting three ERP-like systems for Ministry of Health.<br>
+        I created and supported three ERP-like systems for Ministry of Health.<br>
         <span class="text-info">PHP + Oracle + IIS</span>
       <h3>PHP Developer</h3>
         M7 Software - a little company based on creating internet-shops and personal websites for clients<br>
         January 2009 - May 2010.(not full time job) Moscow<br>
-        Creating sites based on company`s framework<br>
+        I created sites based on company`s framework<br>
         <span class="text-info">PHP + MySql + Apache</span>
     </div>
     <div>
