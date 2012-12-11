@@ -36,6 +36,7 @@
   <script type="text/javascript" src="/js/ajax.js"></script>
   <script type="text/javascript" src="/js/modal.js"></script>
   <script type="text/javascript" src="/js/form.js"></script>
+  <script type="text/javascript" src="/js/pages.js"></script>
   
   
   

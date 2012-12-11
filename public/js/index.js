@@ -37,7 +37,6 @@ function ilfate_init() {
   $('.tip-right').tooltip({placement:'right'});
   $('.label-stars').starred();
   $('.rounded_block').roundedBlock();
-  $('.photo').photo();
 }
 $(document).ready(function(){
   ilfate_init();
@@ -110,22 +109,4 @@ $.fn.bounce = function()
       'line-height':((i%2===0 ? height + (n-i)*intence : height - (n-i)*intence)+'px')
     },(80+i*5))
   }
-};
-
-$.fn.photo = function() 
-{
-  $(this).click(function(){
-    var el = $(this).clone();
-    el.appendTo('body');
-    el
-      .addClass('photo_show')
-      .show('medium');
-    $('body').bind('mousedown', function(){
-      $('.photo_show').fadeOut('fast' , function(){
-        $(this).remove();
-      });
-                           
-      $('body').unbind('mousedown');
-    });
-  });
 };

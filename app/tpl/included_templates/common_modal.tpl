@@ -14,8 +14,3 @@
     <div class="custom-footer"></div>
   </div>
 </div>
-
-<script>
-  
-
-</script>
