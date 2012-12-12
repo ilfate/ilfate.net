@@ -168,9 +168,9 @@ a.rounded_block_link{
 
 /**** photo-gallery ****/
 
-.photo-gallery {margin-left: 30px;}
-.photo-gallery .photo{ height: 170px; float:left; margin: 1px; }
-.photo-gallery .photo img {height: 100%; width: auto;}
+.photo-gallery {margin-left: 30px; width:720px;}
+.photo-gallery .photo{ overflow: hidden; height: 170px; float:left; margin: 1px; }
+.photo-gallery .photo img {}
 #photoModal .modal-body {max-height: none;}
 
 /***************************************************** ***************************/

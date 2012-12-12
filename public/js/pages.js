@@ -40,6 +40,43 @@ function Photo() {
     $('.current-photo').removeClass('current-photo');
     el.addClass('current-photo');
   }
+  
+  this.createRows = function(row_width, row_height) {
+    data = [];
+    
+    $('.photo').each(function(){
+      var img = $(this).find('img');
+      var width = img.width();
+      var height = img.height();
+      var toWidth = width/(height/row_height);
+      data.push({'width' : width, 'height' : height, k : width/height, 'toWidth':toWidth, 'img' : img})
+    });
+    var current_row = row_width;
+    var row = [];
+    for(var i in data) {
+      
+      if(current_row > data[i].toWidth) {
+        
+      } else {
+        info(current_row);
+        //data[i].img.width(current_row);//data[i].toWidth+
+        for(var i2 in row) {
+          if(row[i2].k < 1) {
+            var h_width = parseInt(current_row / 2);
+            row[i2].img.width(row[i2].toWidth + h_width);
+            current_row -= h_width;
+          }
+        }
+        row = [];
+        current_row = row_width;
+      }
+      data[i].img.width(data[i].toWidth);
+      row.push(data[i]);
+      current_row -= data[i].toWidth;
+    }
+    info(data);
+    
+  }
 }
 
 Photo = new Photo();
