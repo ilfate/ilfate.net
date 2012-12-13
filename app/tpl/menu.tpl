@@ -16,7 +16,7 @@
           </button>
           <ul class="dropdown-menu">
             <li><a>Profile</a></li>
-            <li><a class="ajax" href="?Auth=logOut">Log out</a></li>
+            <li><a class="ajax" href="<?=Helper::url('Auth', 'logOut')?>">Log out</a></li>
           </ul>
         </div>
       <? } else { ?>
