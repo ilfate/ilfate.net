@@ -53,29 +53,39 @@ function Photo() {
     });
     var current_row = row_width;
     var row = [];
-    for(var i in data) {
-      
-      if(current_row > data[i].toWidth) {
-        
-      } else {
-        info(current_row);
-        //data[i].img.width(current_row);//data[i].toWidth+
-        for(var i2 in row) {
-          if(row[i2].k < 1) {
-            var h_width = parseInt(current_row / 2);
-            row[i2].img.width(row[i2].toWidth + h_width);
-            current_row -= h_width;
-          }
-        }
+    for(var i in data) 
+	{ 
+      if(current_row <= data[i].toWidth) 
+	  {
+		Photo.fitRow(row, current_row);
         row = [];
         current_row = row_width;
       }
+	  
       data[i].img.width(data[i].toWidth);
-      row.push(data[i]);
-      current_row -= data[i].toWidth;
+	  row.push(data[i]);
+	  current_row -= data[i].toWidth + 2;
     }
-    info(data);
-    
+	if(current_row != 0)
+	{
+		Photo.fitRow(row,current_row);
+	}
+  }
+  
+  this.fitRow = function(row, width_fitting) {
+	var row_fit_arr = [];
+	var all_fit = 0;
+	for(var i = 0; i < row.length; i++)
+	{
+	  var can_fit = row[i].width-row[i].toWidth;
+	  row_fit_arr[i] = can_fit;
+	  all_fit += can_fit;
+	}
+	for(var i = 0; i < row.length; i++)
+	{
+		var avr = ( row_fit_arr[i] / all_fit ) * width_fitting;
+		row[i].img.width(row[i].toWidth + avr);
+	}
   }
 }
 
