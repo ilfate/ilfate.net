@@ -70,6 +70,7 @@ function Photo() {
 	{
 		Photo.fitRow(row,current_row);
 	}
+	$('.photo-gallery').css('visibility','visible');
   }
   
   this.fitRow = function(row, width_fitting) {
