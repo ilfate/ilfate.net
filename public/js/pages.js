@@ -79,10 +79,13 @@ function Photo() {
     }
     for(var i = 0; i < data.length; i++)
     {
-      if(current_row <= data[i].toWidth) 
+      if(current_row < data[i].toWidth) 
       {
         if(row.length < 1) {
-          Photo.createRows(row_width + current_row, row_height, 1);
+          var d_add = data[i].toWidth - current_row > 1 ? data[i].toWidth - current_row : margin ;
+          
+          info('row is empty. we add '+d_add + ' it is '+row_num+' row');
+          Photo.createRows(row_width + d_add, row_height, 1);
           return false;
         }
         Photo.fitRow(row, current_row);
@@ -119,6 +122,8 @@ function Photo() {
         elements_in_row++;
       }
     }
+    info('last_row' +current_row);
+    info(row);
     Photo.fitRow(row,current_row);
     
     $('.photo-gallery').css({visibility:'visible', 'width':row_width + (max_elements * margin)});

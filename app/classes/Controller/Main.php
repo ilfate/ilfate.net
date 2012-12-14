@@ -144,7 +144,7 @@ class Controller_Main extends Controller {
 	  Js::add(Js::C_ONLOAD, 'Photo.createRows(800,220,7)');
     return array(
       'images_gallery' => array(
-          '/images/my/ilfate.png',
+          '/images/my/ilfate2.png',
           '/images/my/ilfate2.jpg',
           '/images/my/tu1.jpg',
           '/images/my/tu2.jpg',
@@ -154,11 +154,9 @@ class Controller_Main extends Controller {
           '/images/my/code1.jpg',
           '/images/my/tu2.jpg',
           '/images/my/is1.jpg',
-          '/images/my/ilfate.png',
+          '/images/my/ilfate2.png',
           '/images/my/we1.jpg',
           '/images/my/tu1.jpg',
-          '/images/my/me1.jpg',
-          '/images/my/is1.jpg',
       ),
       'tpl' => 'Main/photo_content.tpl',
       'layout' => array('html.tpl', 'head.tpl', 'Main/photo.tpl')
