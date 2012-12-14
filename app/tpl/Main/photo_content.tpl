@@ -7,7 +7,7 @@
 <div class="hero-unit">
   <h1>Photo page is not ready yet!</h1>
 </div>
-
+<div class="loader"></div>
 <div class="row photo-gallery">
   <? foreach ($images_gallery as $image) { ?>
   <div class="photo" >

@@ -141,7 +141,7 @@ class Controller_Main extends Controller {
   
   public function photo()
   {
-	Js::add(Js::C_ONLOAD, 'Photo.createRows(400,170,3)');
+	  Js::add(Js::C_ONLOAD, 'Photo.createRows(800,220,7)');
     return array(
       'images_gallery' => array(
           '/images/my/ilfate.png',

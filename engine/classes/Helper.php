@@ -37,10 +37,10 @@ class CoreHelper
     
     $div_id = 'ajax_load_'.  mt_rand(1000, 9999);
     $url = self::url($class, $method, $get);
-    Js::add(Js::C_ONLOAD, '$("#'.$div_id.'").spin()');
+    //Js::add(Js::C_ONLOAD, '$("#'.$div_id.'").spin()');
     Js::add(Js::C_ONAFTERLOAD, 'Ajax.html("'.$url.'", "#'.$div_id.'")');
     
-    return '<div class="ajax_load" id="'.$div_id.'"></div>';
+    return '<div class="ajax_load" id="'.$div_id.'"><div class="loader"></div></div>';
   }
   
   /**

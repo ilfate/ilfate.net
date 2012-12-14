@@ -28,7 +28,6 @@
 <!--  <script type="text/javascript" src="/js/bootstrap-image-gallery.min.js"></script>
   <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>-->
   
-  <script type="text/javascript" src="/js/spin.js"></script>
   <script type="text/javascript" src="/js/scroll.js"></script>
   <script type="text/javascript" src="/js/events.js"></script>
   

@@ -173,6 +173,9 @@ a.rounded_block_link{
 .photo-gallery .photo img {}
 #photoModal .modal-body {max-height: none;}
 
+/**** loader ****/
+.loader { width: 128px; height: 128px; background-image: url('../images/loading.gif'); margin: 0 auto;}
+
 /***************************************************** ***************************/
 
 .main-page-block{
