@@ -11,9 +11,9 @@
 <div class="row photo-gallery">
   <? foreach ($images_gallery as $image) { ?>
   <div class="photo" >
-    <a onclick="Photo.openPhoto(this)" >
+    <? /*<a onclick="Photo.openPhoto(this)" >*/?>
       <img src="<?=$image?>" />
-    </a>
+    <? /*</a>*/?>
   </div>
   <? } ?>
 </div>

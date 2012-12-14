@@ -6,6 +6,8 @@
 
 function Photo() {
 
+  this.photo_sized_margin = 0.4;
+
   this.openPhoto = function(el) 
   {
     $('#photoModal').modal();
@@ -43,6 +45,8 @@ function Photo() {
   
   this.createRows = function(row_width, row_height, is_big) 
   {
+	p(row_width);
+	this.row_height = row_height;
     data = [];
     var margin = 2;
     $('.photo').each(function(){
@@ -50,7 +54,7 @@ function Photo() {
       var width = img.width();
       var height = img.height();
       var toWidth = width/(height/row_height);
-      data.push({'width' : width, 'height' : height, k : width/height, 'toWidth':toWidth, 'img' : img})
+      data.push({'width' : width, 'height' : height, k : width/height, 'toWidth':toWidth, 'img' : img, 'div':$(this)})
     });
     var current_row = row_width;
     var row = [];
@@ -60,17 +64,27 @@ function Photo() {
     var elements_in_row = 0;
     if(is_big)
     {
-      var rand = Math.floor((Math.random() * data.length));
+	  if(is_big == parseInt(is_big))
+	  {
+		var rand = is_big - 1;
+	  } else if((typeof is_big) == 'object') {
+	    var rand = $(is_big).index();
+	  } else {
+		var rand = Math.floor((Math.random() * data.length));
+	  }
       big_width = data[rand].width/(data[rand].height/((row_height*2)+margin));
-      data[rand].img.width(big_width);
-      var rand_photo = data[rand].img.parents('div').first();
-      rand_photo.prependTo(rand_photo.parent()).height((row_height * 2) + margin);
+      data[rand].img.width(big_width).css('margin-top',0);
+      data[rand].div.prependTo(data[rand].div.parent()).height((row_height * 2) + margin).unbind('click').click(function(){Photo.openPhoto(this)});
       current_row -= big_width + margin;
     }
     for(var i in data) 
     {
       if(current_row <= data[i].toWidth) 
       {
+		if(row.length < 1) {
+			Photo.createRows(row_width + current_row, row_height, 1);
+			return false;
+		}
         Photo.fitRow(row, current_row);
         row = [];
         current_row = row_width;
@@ -88,18 +102,18 @@ function Photo() {
       {
         
       } else {
-        data[i].img.width(data[i].toWidth);
+		data[i].div.unbind('click').click(function(){
+			Photo.createRows(row_width, row_height, this);
+		});
         row.push(data[i]);
         current_row -= data[i].toWidth + margin;
         elements_in_row++;
       }
       
     }
-    if(current_row != 0)
-    {
-      Photo.fitRow(row,current_row);
-    }
-    $('.photo-gallery').css({visibility:'visible'}).width(row_width + (max_elements * margin));
+    Photo.fitRow(row,current_row);
+    
+    $('.photo-gallery').css({visibility:'visible', 'width':row_width + (max_elements * margin)});
   }
   
   this.fitRow = function(row, width_fitting) 
@@ -116,6 +130,9 @@ function Photo() {
     {
       var avr = ( row_fit_arr[i] / all_fit ) * width_fitting;
       row[i].img.width(row[i].toWidth + avr);
+	  row[i].div.height(this.row_height);
+	  var d_height = (avr / row[i].k) * this.photo_sized_margin;
+	  row[i].img.css({'margin-top':-d_height});
     }
   }
 }
