@@ -24,11 +24,11 @@ body, html {
     font-family: arial,sans-serif;
     font-size: small;
 }
-
 body {
   padding-top: 60px;
   background: url('../images/dark-tile.png');
 }
+
 
 .main-content-well, .main-content-well-side {
   min-height: 700px;
@@ -171,7 +171,7 @@ a.rounded_block_link{
 .photo-gallery {margin: 0 auto; width:720px; visibility:hidden ;}
 .photo-gallery .photo{ overflow: hidden; height: 170px; float:left; margin: 1px; }
 .photo-gallery .photo img {}
-#photoModal .modal-body {max-height: none;}
+#photoModal .modal-body {max-height: none; text-align: center;}
 
 /**** loader ****/
 .loader { width: 128px; height: 128px; background-image: url('../images/loading.gif'); margin: 0 auto;}

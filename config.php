@@ -19,7 +19,7 @@ return array(
 		),
       
     'log_sql' => true,
-    'is_dev'  => false,
+    'is_dev'  => true,
     'logs_path' => '/home/ilfate/www/php/logs/'
       
   ),
@@ -27,6 +27,6 @@ return array(
 	'dbname' => 'ilfate',
 	'host'   => 'localhost',
 	'login'  => 'root',
-	'pass'  =>  '',
+	'pass'  =>  '12317233',
   )
 );

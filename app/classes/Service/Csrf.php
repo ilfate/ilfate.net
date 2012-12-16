@@ -20,9 +20,9 @@ class Service_Csrf extends CoreService
     if(Request::getMethod() == "POST")
     {
       if(!Csrf::check())
-	  {
-		  throw new CoreException_Error('No CSRF token found');
-	  }
+      {
+        throw new CoreException_Error('No CSRF token found');
+      }
     }
   }
   
