@@ -146,7 +146,8 @@ function Photo() {
       var avr = ( row_fit_arr[i] / all_fit ) * width_fitting;
       row[i].img.width(row[i].toWidth + avr);
       row[i].div.height(this.row_height);
-      var d_height = (avr / row[i].k) * this.photo_sized_margin;
+	  var k = row[i].img.data('down-shift') ? row[i].img.data('down-shift') : this.photo_sized_margin;
+      var d_height = (avr / row[i].k) * k;
       row[i].img.css({'margin-top':-d_height});
     }
   }

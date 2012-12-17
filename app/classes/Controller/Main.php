@@ -141,19 +141,28 @@ class Controller_Main extends Controller {
   
   public function photo()
   {
-	  Js::add(Js::C_ONLOAD, 'Photo.createRows(800,220,7)');
+	$image = Request::getParameter('photo');
+	if(!$image) 
+	{
+		$image = 1;
+	}
+	Js::add(Js::C_ONLOAD, 'Photo.createRows(800,220,'.$image.')');
     return array(
       'images_gallery' => array(
-          '/images/my/ilfate2.png',
-          '/images/my/ilfate2.jpg',
-          '/images/my/tu2.jpg',
-          '/images/my/snow1.jpg',
-          '/images/my/me1.jpg',
-          '/images/my/we1.jpg',
-          '/images/my/snow2.jpg',
-          '/images/my/code1.jpg',
-          '/images/my/is1.jpg',
-          '/images/my/tu1.jpg',
+          array('img' => '/images/my/tu1.jpg'),
+		  array('img' => '/images/my/snow1.jpg', 'down-shift' => 0.1),
+		  array('img' => '/images/my/code1.jpg'),
+		  array('img' => '/images/my/snow3.jpg'),
+          array('img' => '/images/my/ilfate2.jpg'),
+		  array('img' => '/images/my/ilfate2.png'),
+          array('img' => '/images/my/tu2.jpg'),
+          array('img' => '/images/my/me1.jpg'),
+          array('img' => '/images/my/snow0.jpg'),
+          array('img' => '/images/my/we1.jpg'),
+          array('img' => '/images/my/snow2.jpg'),
+          array('img' => '/images/my/snow4.jpg'),
+          array('img' => '/images/my/is1.jpg'),
+          array('img' => '/images/my/snow5.jpg'),
       ),
       'tpl' => 'Main/photo_content.tpl',
       'layout' => array('html.tpl', 'head.tpl', 'Main/photo.tpl')

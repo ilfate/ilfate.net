@@ -12,7 +12,7 @@
   <? foreach ($images_gallery as $image) { ?>
   <div class="photo" >
     <? /*<a onclick="Photo.openPhoto(this)" >*/?>
-      <img src="<?=$image?>" />
+      <img src="<?=$image['img']?>" <?=(isset($image['down-shift'])?'data-down-shift="'.$image['down-shift'].'"':'')?> />
     <? /*</a>*/?>
   </div>
   <? } ?>

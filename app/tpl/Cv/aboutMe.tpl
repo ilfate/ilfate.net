@@ -37,6 +37,7 @@
       Web development: CSS, HTML5, Jquery, Bootstrap<br>
       DB: MySql <span class="tip" rel="tooltip" title="Module for MySql to work with it like noSql database" >HandlerSocket</span> Sphinx, Oracle, Redis<br>
       VCS: Svn, Git<br>
+      Frameworks: ZendFramework, Yii<br>
       Other: Nginx, Memcached, PHPUnit, Behat, Selenium, Phing<br>
       <a href="<?=Helper::url('Cv', 'skills')?>">My skills table</a>
     </div>
@@ -56,7 +57,7 @@
       <h1>Interests</h1> 
       Web development<br>
       Game development<br>
-      Snowboarding<br>
+      <a href="<?=  Helper::url('Main', 'photo', array('photo' => 9))?>">Snowboarding</a><br>
       Reading<br>
       Traveling<br>
       Bicycling<br>
