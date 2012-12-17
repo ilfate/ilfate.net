@@ -162,7 +162,7 @@ class Controller_Main extends Controller {
           array('img' => '/images/my/snow2.jpg'),
           array('img' => '/images/my/snow4.jpg'),
           array('img' => '/images/my/is1.jpg'),
-          array('img' => '/images/my/snow5.jpg'),
+          array('img' => '/images/my/snow5.jpg', 'down-shift' => 0.1),
       ),
       'tpl' => 'Main/photo_content.tpl',
       'layout' => array('html.tpl', 'head.tpl', 'Main/photo.tpl')
