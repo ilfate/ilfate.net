@@ -11,7 +11,7 @@
 <div class="row show-grid">
   <div class="span3 offset1 main-page-block">
     <a href="<?=Helper::url('Cv')?>" class="rounded_block_link">
-      <?= $this->inc('interface/rounded_block.tpl', array('text' => 'CV', 'background' => '/images/my/ilfate.png')) ?>
+      <?= $this->inc('interface/rounded_block.tpl', array('text' => 'CV', 'background' => '/images/my/code1_s.jpg')) ?>
     </a>
   </div>
   <div class="span3 offset1 main-page-block">

@@ -82,7 +82,7 @@ class Controller_Main extends Controller {
       array(
         'url'   => Helper::url('Cv'),
         'text'  => 'Ilya Rubinchik',
-        'image' => '/images/my/ilfate.png'
+        'image' => '/images/my/code1_s.jpg'
       ),
       array(
         'url'   => Helper::url('Main', 'codeStarred'),
