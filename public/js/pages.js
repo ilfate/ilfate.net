@@ -51,11 +51,23 @@ function Photo() {
     var margin = 2;
     $('.photo').each(function(){
       var img = $(this).find('img');
-      var width = img.width();
-      var height = img.height();
+      var width = 0;
+      var height = 0;
+      if(!img.data('w')) 
+      {
+        width = img.width();
+        height = img.height();
+        img.attr('data-w', width).attr('data-h', height);
+      } else {
+        width = img.data('w');
+        height = img.data('h');
+      }
+      
+      
       var toWidth = width/(height/row_height);
       data.push({'width' : width, 'height' : height, k : width/height, 'toWidth':toWidth, 'img' : img, 'div':$(this)})
     });
+    info(data);
     var current_row = row_width;
     var row = [];
     var row_num = 1;
@@ -73,6 +85,7 @@ function Photo() {
         var rand = Math.floor((Math.random() * data.length));
       }
       big_width = data[rand].width/(data[rand].height/((row_height*2)+margin));
+      //info('big_width=' + big_width);
       data[rand].img.width(big_width).css('margin-top',0);
       data[rand].div.prependTo(data[rand].div.parent()).height((row_height * 2) + margin).unbind('click').click(function(){Photo.openPhoto(this)});
       current_row -= big_width + margin;
@@ -86,6 +99,8 @@ function Photo() {
           
           info('row is empty. we add '+d_add + ' it is '+row_num+' row');
           Photo.createRows(row_width + d_add, row_height, 1);
+//          $('.photo-gallery').css({visibility:'visible', 'width':row_width + (max_elements * margin)});
+//          $('.loader').hide();
           return false;
         }
         Photo.fitRow(row, current_row);
@@ -107,8 +122,11 @@ function Photo() {
         {
           tempData = Photo.findReplacement(current_row, data, i);
           if(!tempData) {
-            info(current_row);
-            Photo.createRows(row_width + current_row - data[i].toWidth, row_height, 1);
+            //info(data[i]);
+            hoto.createRows(row_width + current_row - data[i].toWidth, row_height, 1);
+//            $('.photo-gallery').css({visibility:'visible', 'width':row_width + (max_elements * margin)});
+//            $('.loader').hide();
+            
             return false;
           } else {
             data = tempData;
@@ -122,8 +140,8 @@ function Photo() {
         elements_in_row++;
       }
     }
-    info('last_row' +current_row);
-    info(row);
+    //info('last_row' +current_row);
+   
     Photo.fitRow(row,current_row);
     
     $('.photo-gallery').css({visibility:'visible', 'width':row_width + (max_elements * margin)});
@@ -132,7 +150,7 @@ function Photo() {
   
   this.fitRow = function(row, width_fitting) 
   {
-   // info(width_fitting);
+//    info(width_fitting);
     var row_fit_arr = [];
     var all_fit = 0;
     for(var i = 0; i < row.length; i++)

@@ -159,7 +159,7 @@ class Controller_Main extends Controller {
           array('img' => '/images/my/me1.jpg'),
           array('img' => '/images/my/snow0.jpg'),
           array('img' => '/images/my/we1.jpg'),
-          array('img' => '/images/my/snow2.jpg'),
+          array('img' => '/images/my/snow2.jpg', 'down-shift' => 0.2),
           array('img' => '/images/my/snow4.jpg'),
           array('img' => '/images/my/is1.jpg'),
           array('img' => '/images/my/snow5.jpg', 'down-shift' => 0.1),
