@@ -1178,7 +1178,28 @@ $(document).keypress(function(event) {
       break;
     case 13:  // Enter
       break;
-    case 0 :
+    case 119 : // w
+      CanvasActions.robot.forward();
+      break;
+    case 97 : // a
+      CanvasActions.robot.rotate(-1);
+      break;
+    case 115 : // s
+      CanvasActions.robot.backward();
+      break;
+    case 100 : // d
+      CanvasActions.robot.rotate(1);
+      break;
+    case 32 :  // space
+      break;
+    case 101 :  // e
+      CanvasActions.robot.destroyWall();
+      break;
+    case 114 :  // r
+      break;
+    case 102 :  // f
+      break;
+    case 0 :                  //// For Mozila
       switch(event.charCode)
       {
         case 119 : // w
