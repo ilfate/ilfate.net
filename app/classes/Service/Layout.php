@@ -16,15 +16,16 @@ class Service_Layout extends CoreService
   const PRIORITY = 70;
   
   private static $menu = array(
-    'main'        => array('class' => 'Main',       'method' => 'index',    'text' => 'Main'),
-    'about_me'    => array('class' => 'Cv',         'method' => 'aboutMe',  'text' => 'About me'),
-    'game'	      => array('class' => 'Game_Main',  'method' => 'index',    'text' => 'Game'),
+    'about_me'    => array('class' => 'Cv',         'method' => 'aboutMe',  'text' => 'CV'),
+    'game'	      => array('class' => 'Game_Main',  'method' => 'index',    'text' => 'Games'),
+    'photos'	    => array('class' => 'Main',       'method' => 'photo',    'text' => 'Photos')
   );
   private static $menu_map = array(
-    'Auth'   => 'main',
-    'Main'   => array('index' => 'main', 'aboutMe' => 'about_me' ),
-    'Cv'     => 'about_me',
-    'Game'   => 'game',
+    'Auth'      => 'main',
+    'Main'      => array('aboutMe' => 'about_me', 'photo' => 'photos' ),
+    'Cv'        => 'about_me',
+    'Game_Main' => 'game',
+    'RobotRock' => 'game',
   );
   
   private static $default_menu = 'main';
@@ -54,11 +55,11 @@ class Service_Layout extends CoreService
           $active_menu = self::$menu_map[$class];
         }
       }
-      if(!isset($active_menu)) 
+      if(isset($active_menu)) 
       {
-        $active_menu = self::$default_menu;
+        self::$menu[$active_menu]['active'] = true;
       }
-      self::$menu[$active_menu]['active'] = true;
+      
       CoreView_Http::setGlobal('ilfate_menu', self::$menu);
 
       /**

@@ -22,7 +22,7 @@ class Controller_Main extends Controller {
     //self::cache('aaa', 'bbb', 'ccc');
     
         //Model_User::createUserWithEmail('email', 'pass', '$name');
-	    
+      
     return array();
   }
   
@@ -124,49 +124,51 @@ class Controller_Main extends Controller {
   {
     return array(
       'tpl' => 'Main/code.tpl',
-	  );
+    );
   }
   public function codeEngine()
   {
     return array(
       'tpl' => 'Main/codeEngine.tpl',
-	  );
+    );
   }
   public function codeStarred()
   {
     return array(
       'tpl' => 'Main/codeStarred.tpl',
-	  );
+    );
   }
   
   public function photo()
   {
-	$image = Request::getParameter('photo');
-	if(!$image) 
-	{
-		$image = 1;
-	}
-	Js::add(Js::C_ONLOAD, 'Photo.createRows(800,220,'.$image.')');
+  $image = Request::getParameter('photo');
+  if(!$image) 
+  {
+    $image = 1;
+  }
+  Js::add(Js::C_ONLOAD, 'Photo.createRows(800,220,'.$image.')');
     return array(
       'images_gallery' => array(
-          array('img' => '/images/my/tu1.jpg'),
-		  array('img' => '/images/my/snow1.jpg', 'down-shift' => 0.1),
-		  array('img' => '/images/my/code1.jpg'),
-		  array('img' => '/images/my/snow3.jpg'),
-          array('img' => '/images/my/ilfate2.jpg'),
-		  array('img' => '/images/my/ilfate2.png'),
-          array('img' => '/images/my/tu2.jpg'),
-          array('img' => '/images/my/me1.jpg'),
-          array('img' => '/images/my/snow0.jpg'),
-          array('img' => '/images/my/we1.jpg'),
-          array('img' => '/images/my/snow2.jpg', 'down-shift' => 0.2),
-          array('img' => '/images/my/snow4.jpg'),
-          array('img' => '/images/my/is1.jpg'),
-          array('img' => '/images/my/snow5.jpg', 'down-shift' => 0.1),
+        array('img' => '/images/my/tu1.jpg'),
+        array('img' => '/images/my/snow1.jpg', 'down-shift' => 0.1),
+        array('img' => '/images/my/code1.jpg'),
+        array('img' => '/images/my/snow3.jpg'),
+        array('img' => '/images/my/ilfate2.jpg'),
+        array('img' => '/images/my/aust1.jpg'),
+        array('img' => '/images/my/tu2.jpg'),
+        array('img' => '/images/my/snow0.jpg'),
+        array('img' => '/images/my/aust2.jpg', 'down-shift' => 0.1),
+        array('img' => '/images/my/aust3.jpg'),
+        array('img' => '/images/my/snow2.jpg', 'down-shift' => 0.2),
+        array('img' => '/images/my/snow4.jpg'),
+        array('img' => '/images/my/is1.jpg'),
+        array('img' => '/images/my/ilfate2.png'),
+        array('img' => '/images/my/snow5.jpg', 'down-shift' => 0.1),
+          
       ),
       'tpl' => 'Main/photo_content.tpl',
       'layout' => array('html.tpl', 'head.tpl', 'Main/photo.tpl')
-	  );
+    );
   }
 }
 

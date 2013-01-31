@@ -4,8 +4,9 @@
 <?= Helper::exe('Logger', 'index'); ?>
 */?>
 
-<div class="hero-unit">
-  <h1>Photo page is not ready yet!</h1>
+
+<div class="page-header">
+  <h1>Photos <small>Some photos of me</small></h1>
 </div>
 <div class="loader"></div>
 <div class="row photo-gallery">

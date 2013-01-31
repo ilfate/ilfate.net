@@ -45,7 +45,6 @@ function Photo() {
   
   this.createRows = function(row_width, row_height, is_big) 
   {
-    info('start. row='+row_width);
     this.row_height = row_height;
     data = [];
     var margin = 2;
@@ -62,12 +61,10 @@ function Photo() {
         width = img.data('w');
         height = img.data('h');
       }
-      
-      
       var toWidth = width/(height/row_height);
       data.push({'width' : width, 'height' : height, k : width/height, 'toWidth':toWidth, 'img' : img, 'div':$(this)})
     });
-    info(data);
+    
     var current_row = row_width;
     var row = [];
     var row_num = 1;
@@ -87,7 +84,7 @@ function Photo() {
       big_width = data[rand].width/(data[rand].height/((row_height*2)+margin));
       //info('big_width=' + big_width);
       data[rand].img.width(big_width).css('margin-top',0);
-      data[rand].div.prependTo(data[rand].div.parent()).height((row_height * 2) + margin).unbind('click').click(function(){Photo.openPhoto(this)});
+      data[rand].div.prependTo(data[rand].div.parent()).height((row_height * 2) + margin).unbind('click');//.click(function(){Photo.openPhoto(this)});
       current_row -= big_width + margin;
     }
     for(var i = 0; i < data.length; i++)
@@ -99,8 +96,6 @@ function Photo() {
           
           info('row is empty. we add '+d_add + ' it is '+row_num+' row');
           Photo.createRows(row_width + d_add, row_height, 1);
-//          $('.photo-gallery').css({visibility:'visible', 'width':row_width + (max_elements * margin)});
-//          $('.loader').hide();
           return false;
         }
         Photo.fitRow(row, current_row);
