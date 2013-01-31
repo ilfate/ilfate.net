@@ -16,7 +16,6 @@ CanvasActions = function() {
   
   this.init = function()
   {
-    
     this.stage = new createjs.Stage("demoCanvas");
     this.stage.enableMouseOver(10);
     this.stage.mouseMoveOutside = true;
@@ -60,8 +59,8 @@ CanvasActions = function() {
   this.createMap = function() 
   {
     var map_container = new createjs.Container();
-    map_container.x = this.width/2;  
-    map_container.y = this.height/2;  
+    map_container.x = this.width/2 - 32;  
+    map_container.y = this.height/2 - 32;  
     this.map = new IL.Map(map_container);
     this.map.draw();
     
@@ -692,7 +691,7 @@ IL.Monster = function(container, map)
 {
   this.container = container;
   this.map = map;
-  this.direction = 0;
+  this.direction = 2;
   this.type = "crab";
   this.name = "";
   this.needDraw = true;
@@ -863,6 +862,7 @@ IL.Monster = function(container, map)
       this.checkAngle();
       
       var cell = this.map.getCell(this.point.x, this.point.y);
+      
       
       this.img.x = -this.map.camera.x + position.x + cell.cutLeft;
       this.img.y = -this.map.camera.y + position.y + cell.cutTop;
