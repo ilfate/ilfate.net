@@ -57,7 +57,7 @@
       <h1>Interests</h1> 
       Web development<br>
       Game development<br>
-      <a href="http://www.youtube.com/watch?v=xk2_qX_oU3U">Snowboarding</a><br>
+      <a target="_blank" href="http://www.youtube.com/watch?v=xk2_qX_oU3U">Snowboarding</a><br>
       Reading<br>
       Traveling<br>
       Bicycling<br>
