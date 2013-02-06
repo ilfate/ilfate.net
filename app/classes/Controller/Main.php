@@ -27,19 +27,6 @@ class Controller_Main extends Controller {
   }
   
   /**
-   * 
-   * @return type 
-   */
-  public function aboutMe() 
-  {
-      
-    return array(
-      'mode' => Request::EXECUTE_MODE_HTTP,
-      'tpl' => 'Main/aboutMe.tpl'
-    );
-  }
-  
-  /**
    * @cache 10 tag tag2aw[1] tags t2[2][0]
    * @return type 
    */
@@ -168,6 +155,17 @@ class Controller_Main extends Controller {
       ),
       'tpl' => 'Main/photo_content.tpl',
       'layout' => array('html.tpl', 'head.tpl', 'Main/photo.tpl')
+    );
+  }
+  
+  public function test() 
+  {
+    $d = new Declension();
+    $ret = $d->setPerson('m', 'Мария', 'Белова')->getAll();
+    Logger::dump($ret);
+    return array(
+      'mode' => Request::EXECUTE_MODE_HTTP,
+      'tpl' => 'Main/index.tpl'
     );
   }
 }
