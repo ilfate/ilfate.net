@@ -15,6 +15,9 @@ define('ILFATE_PATH', __DIR__ . '/');
 
 define('SERVER_NAME', $_SERVER['SERVER_NAME']);
 
+setlocale(LC_ALL, 'ru_RU.UTF-8');
+mb_internal_encoding('utf-8');
+
 if(!defined('HTTP_ROOT')) 
 {
 	$http_path = '/';

@@ -75,19 +75,27 @@
     <div>
       <h1>Work experience</h1>
       <h3>PHP Developer</h3>
-        <a target="_blank" href="http://www.professionali.ru">Professionali.ru</a> - a huge Russian social network for people in professional occupations (like LinkedIn)<br>
+        <a target="_blank" href="http://www.professionali.ru">Professionali.ru</a> - a huge Russian social network for people in 
+		professional occupations (like LinkedIn)<br>
         August 2012 - present. Moscow<br>
-        I`m developing high load back-end. Responsible for network`s API and refactoring parts of core.<br>
+        I`m developing high load back-end in team of 16 developers. 
+		I`m responsible for network`s API, some of the network`s apps, creating and supporting different sections of network features, 
+		and testing and refactoring parts of core. I had covered the most important parts of core with Unit tests(PHPUnit).<br>
         <span class="text-info">PHP + Mysql + Nginx</span>
       <h3>Leading Developer</h3>
         <a target="_blank" href="http://www.ddestiny.ru">Destiny Devopment</a> - A GameDev company that specializes on Browser games<br> 
         Septeber 2011 - August 2012. Moscow<br>
-        Leading developer on a browser game. I created whole project structure and developed most important parts of game logic.<br>
+        I was a leading developer on a browser game. 
+		I created whole project structure and developed most important parts of game logic. 
+		I was using MySql + HandlerSocket to improve query speed. 
+		I also took a great part in discussing and inventing game design.<br>
         <span class="text-info">PHP + Mysql + Nginx</span>
       <h3>Leading Specialist (PHP)</h3>
         <a target="_blank" href="http://www.prognoz.ru">PROGNOZ</a> - A huge company that fills orders for government and banking<br>
         August 2010 - September 2011. Moscow<br>
-        I created and supported three ERP-like systems for Ministry of Health.<br>
+        I created and supported three ERP-like systems for Ministry of Health. 
+		Those are analytic systems with a lot of complicated queries and. 
+		And also some of them are OLAP-based.<br>
         <span class="text-info">PHP + Oracle + IIS</span>
       <h3>PHP Developer</h3>
         M7 Software - a little company based on creating internet-shops and personal websites for clients<br>

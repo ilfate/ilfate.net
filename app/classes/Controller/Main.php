@@ -160,9 +160,12 @@ class Controller_Main extends Controller {
   
   public function test() 
   {
-    $d = new Declension();
-    $ret = $d->setPerson('m', 'Мария', 'Белова')->getAll();
-    Logger::dump($ret);
+	
+
+    Declension::unitTest();
+//	$d = new Declension();
+//    $ret = $d->setPerson('f', 'Мария', 'Белова')->getAll();
+//    Logger::dump($ret);
     return array(
       'mode' => Request::EXECUTE_MODE_HTTP,
       'tpl' => 'Main/index.tpl'
