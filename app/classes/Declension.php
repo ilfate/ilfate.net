@@ -24,7 +24,7 @@
  *   setlocale(LC_ALL, 'ru_RU.UTF-8');
  *   mb_internal_encoding('utf-8');
  *
- * @author Ilya Rubinchik
+ * @author Ilya Rubinchik ilfate@gmail.com
  */
 class Declension
 {
@@ -59,6 +59,10 @@ class Declension
   ];
   protected $vowels = ['а', 'у', 'о', 'ы', 'и', 'э', 'я', 'ю', 'ё', 'е'];
   protected $consonants = ['б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь'];
+  /**
+   * all possible cases
+   * @var array 
+   */
   protected $cases = [
     'genitive',      // 'Родительный'
     'dative',        // 'Дательный'
@@ -75,6 +79,11 @@ class Declension
   const SURNAME   = 'surname';
   const VOWEL     = 'vowel';
   const CONSONANT = 'consonant';
+  
+  protected $possibleTypes = [
+    self::NAME,
+    self::SURNAME
+  ];
   
   protected $name;
   protected $surname;
@@ -109,6 +118,7 @@ class Declension
    * Sets person`s sex
    * 
    * @param String|Integer $sex
+   * @return \Declension
    * @throws Exception
    */
   public function setSex($sex)
@@ -120,7 +130,8 @@ class Declension
       $this->sex = self::FEMALE;
     } else {
       throw new Exception('Sex error =). Please provide correct sex ("m" or "f")');
-    }    
+    }
+    return $this;
   }
   
   /**
@@ -131,13 +142,17 @@ class Declension
   public function getAll()
   {
     $return = [];
-    $this->findRule(self::NAME);
-    $this->findRule(self::SURNAME);
-    foreach ($this->cases as $case) {
-      $return[$case] = [
-       self::NAME => $this->getWordByCase(self::NAME, $case), 
-       self::SURNAME => $this->getWordByCase(self::SURNAME, $case)
-      ];
+    foreach ($this->possibleTypes as $type) 
+    {
+      if(!empty($this->$type)) 
+      {
+        $this->findRule($type);
+        foreach ($this->cases as $case) 
+        {
+          if(!isset($return[$case])) $return[$case] = [];
+          $return[$case][$type] = $this->getWordByCase($type, $case);
+        }
+      }
     }
     return $return;
   }
@@ -270,10 +285,11 @@ class Declension
       ['f', 'Екатерина', 'Иванькина', ['Екатерины Иванькиной', 'Екатерине Иванькиной', 'Екатерину Иванькину', 'Екатериной Иванькиной', 'Екатерине Иванькиной']],
       ['m', 'Иван', 'Иванов', ['Ивана Иванова', 'Ивану Иванову', 'Ивана Иванова', 'Иваном Ивановым', 'Иване Иванове']],
       ['m', 'Александр', 'Гернович', ['Александра Герновича', 'Александру Герновичу', 'Александра Герновича', 'Александром Герновичем', 'Александре Герновиче']],
-      ['m', 'Павел', 'Орловский', ['Павела Орловскийого', 'Павелу Орловскийому', 'Павела Орловскийого', 'Павелом Орловскийим', 'Павеле Орловскийом']],
-      ['m', 'Федор', 'Туленцев', ['Федора Туленцева', 'Федору Туленцеву', 'Федора Туленцева', 'Федором Туленцевым', 'Федоре Туленцеве']],
+      ['m', 'Павел', 'Орловский', ['Павелаe Орловскийого', 'Павелу Орловскийому', 'Павела Орловскийого', 'Павелом Орловскийим', 'Павеле Орловскийом']],
+      ['m', 'Федор', 'Туленцев', ['Федораe Туленцева', 'Федору Туленцеву', 'Федора Туленцева', 'Федором Туленцевым', 'Федоре Туленцеве']],
     ];
     $declension = new Declension();
+	$errors = array();
     foreach ($data as $test)
     {
       $result = $declension->setPerson($test[0], $test[1], $test[2])->getAll();
@@ -283,9 +299,15 @@ class Declension
       }
       if(array_values($result) !== $test[3])
       {
-        echo 'unit test didnt pass at ' . $test[1] . ' ' . $test[2] .'<br>';
-      } 
+        $errors []= 'at ' . $test[1] . ' ' . $test[2] .'<br>';
+      }	  
     }
+	if($errors)
+	{
+		echo "test failed " . implode("\n and ", $errors);
+	} else {
+		echo 'test passed';
+	}
   }
 }
 
