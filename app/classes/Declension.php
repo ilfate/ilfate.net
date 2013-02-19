@@ -7,6 +7,10 @@
 собственных, но для тестового задания очень удобная. Базы данных
 использовать никакие не надо, они могут быть добавлены когда-нибудь в
 будущем.
+ English:
+ You need to create class that will change Russian names declensions in all ways.
+ There is a table of rules you can use for that.
+ There is no need to use databases.
 */
 
 /**
@@ -28,7 +32,11 @@
  */
 class Declension
 {
-  // all rules
+  /**
+   * this is just table of rules we should use.
+   *
+   * @var array 
+   */
   protected $rules = [
     0 => ['sex' => [self::FEMALE], 'type' => [self::SURNAME], 'end' => self::CONSONANT],
     1 => ['sex' => [self::FEMALE], 'type' => [self::NAME], 'end' => self::CONSONANT, 'notEnd' => ['ь']],
@@ -222,7 +230,7 @@ class Declension
         return $this->matched_rules[$type] = $id_rule;
       }
     }
-    // if we got here no rule fits our string...
+    // if we got here - then no rule is fiting our string...
     return false;
   }
 
@@ -289,7 +297,7 @@ class Declension
       ['m', 'Федор', 'Туленцев', ['Федораe Туленцева', 'Федору Туленцеву', 'Федора Туленцева', 'Федором Туленцевым', 'Федоре Туленцеве']],
     ];
     $declension = new Declension();
-	$errors = array();
+	  $errors = array();
     foreach ($data as $test)
     {
       $result = $declension->setPerson($test[0], $test[1], $test[2])->getAll();
@@ -302,12 +310,12 @@ class Declension
         $errors []= 'at ' . $test[1] . ' ' . $test[2] .'<br>';
       }	  
     }
-	if($errors)
-	{
-		echo "test failed " . implode("\n and ", $errors);
-	} else {
-		echo 'test passed';
-	}
+    if($errors)
+    {
+      echo "test failed " . implode("\n and ", $errors);
+    } else {
+      echo 'test passed';
+    }
   }
 }
 
