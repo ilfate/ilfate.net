@@ -9,7 +9,7 @@
  * 
  * @author ilfate
  */
-class CoreException_CacheError extends CoreException_Error 
+class CoreException_ConfigError extends CoreException_Error
 {
   
 }

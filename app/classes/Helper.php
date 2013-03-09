@@ -15,5 +15,3 @@ class Helper extends CoreHelper
   
  
 }
-
-?>

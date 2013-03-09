@@ -6,10 +6,11 @@
  */
 
 /**
- * 
+ * Description of ModuleFrontController
+ *
  * @author ilfate
  */
-class CoreException_CacheError extends CoreException_Error 
+class ModuleFrontController extends CoreFrontController
 {
   
 }

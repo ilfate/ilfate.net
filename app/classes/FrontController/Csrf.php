@@ -6,23 +6,21 @@
  */
 
 /**
- * Description of Service_Auth
+ * Description of FrontController_Auth
  * 
  *
  * @author ilfate
  */
-class Service_Csrf extends CoreService
+class FrontController_Csrf implements CoreInterfaceFrontController
 {
   const PRIORITY = 80;
   
   public static function preExecute() 
   {
-    if(Request::getMethod() == "POST")
-    {
-      if(!Csrf::check())
-      {
-        throw new CoreException_Error('No CSRF token found');
-      }
+    if (Service::getRequest()->getMethod() == "POST") {
+      if (!Csrf::check()) {
+		    throw new CoreException_Error('No CSRF token found');
+	    }
     }
   }
   
@@ -33,6 +31,3 @@ class Service_Csrf extends CoreService
   
   
 }
-
-
-?>

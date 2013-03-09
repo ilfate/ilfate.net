@@ -48,10 +48,10 @@ CanvasActions = function() {
   this.getMapManifest = function() 
   {
     return [
-      {src:"/images/game/tile1.png",id:"floor"},
-      {src:"/images/game/tile1_damaged.png",id:"floor_d"},
-      {src:"/images/game/tile2.png",id:"empty"},
-      {src:"/images/game/block.png",id:"wall"},
+//      {src:"/images/game/tile1.png",id:"floor"},
+//      {src:"/images/game/tile1_damaged.png",id:"floor_d"},
+//      {src:"/images/game/tile2.png",id:"empty"},
+//      {src:"/images/game/block.png",id:"wall"},
       {src:"/images/game/map.png",id:"map"}
     ];  
   }

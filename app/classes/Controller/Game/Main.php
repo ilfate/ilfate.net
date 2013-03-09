@@ -29,7 +29,7 @@ class Controller_Game_Main extends Controller {
   
   public function gameBlank()
   {
-    Service_Sidebar::addSideBar('Game_Main', 'gameBlankinfo');
+    FrontController_Sidebar::addSideBar('Game_Main', 'gameBlankinfo');
     Js::add(Js::C_ONLOAD, 'CanvasActions.init()');
     return array(
       'layout' => array('html.tpl', 'Game/head.tpl', 'layout.tpl'),
@@ -57,5 +57,3 @@ class Controller_Game_Main extends Controller {
     );
   }
 }
-
-?>

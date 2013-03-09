@@ -8,10 +8,10 @@
         <? } ?>
         <li><a href="#!/error"><?=$access_restricted ? 'RESRICTED' : ''?></a></li>
       </ul>
-      <? if(Service_Auth::isAuth()) { ?>
+      <? if(FrontController_Auth::isAuth()) { ?>
         <div class="btn-group pull-right">
         <button class="btn dropdown-toggle" data-toggle="dropdown">
-          <?=Service_Auth::getUser()->name?>
+          <?=FrontController_Auth::getUser()->name?>
           <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">

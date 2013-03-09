@@ -128,7 +128,7 @@ class Controller_Main extends Controller {
   
   public function photo()
   {
-  $image = Request::getParameter('photo');
+  $image = Service::getRequest()->getParameter('photo');
   if(!$image) 
   {
     $image = 1;

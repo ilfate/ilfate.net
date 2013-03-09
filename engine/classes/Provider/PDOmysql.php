@@ -32,24 +32,15 @@ class CoreProvider_PDOmysql extends CoreProvider
   
   public static function __staticConstruct() 
   {
-    if(!class_exists('PDO'))
-    {
+    if (!class_exists('PDO')) {
       throw new CoreException_ModelError('PDO provider needs PDO class... surprise!');
     }
   }
   public static function init()
   {
-    
-    self::$config = array(
-	'dbname' => Core::getExtendedConfig(__CLASS__, 'dbname'),
-	'host'   => Core::getExtendedConfig(__CLASS__, 'host'),
-	'login'  => Core::getExtendedConfig(__CLASS__, 'login'),
-	'pass'  =>  Core::getExtendedConfig(__CLASS__, 'pass'),
-  );
-  
-    
-    try 
-    {
+    self::$config = Service::getConfig()->get('CoreProvider_PDOmysql');
+
+    try {
       self::$PDO = new PDO(
         'mysql:dbname='.self::$config['dbname'].';host='.self::$config['host'], 
         self::$config['login'], 
@@ -79,8 +70,7 @@ class CoreProvider_PDOmysql extends CoreProvider
     $source = self::$PDO->prepare($query);
     $data = $source->execute($params);
     Logger::sql_finish();
-    if($data) 
-    {
+    if ($data) {
       return $source->rowCount();
     } else {
       return false;
@@ -110,6 +100,3 @@ class CoreProvider_PDOmysql extends CoreProvider
 		);
 	}
 }
-
-
-?>
