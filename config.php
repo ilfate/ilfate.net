@@ -22,6 +22,7 @@ return array(
   'is_dev'    => true,
   'logs_path' => '/home/ilfate/www/php/ilfate.net/logs/',
   'site_url'  => 'ilfate.ru',
+  'default_language' => 'EN',
 
   'CoreProvider_PDOmysql' => array(
     'dbname' => 'ilfate',
