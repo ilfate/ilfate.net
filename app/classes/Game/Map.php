@@ -25,7 +25,11 @@ class Game_Map {
     $direction = $this->detectDirection($x, $y);
     $chunkX = ceil($x / self::CHUNK_SIZE);
     $chunkY = ceil($y / self::CHUNK_SIZE);
-    $chunkId = $this->getIdByCoords($chunkX, $chunkY);
+    $chunkId = $direction . $this->getIdByCoords($chunkX, $chunkY);
+
+    $cellX = $x - (($chunkX - 1) * self::CHUNK_SIZE);
+    $cellY = $y - (($chunkY - 1) * self::CHUNK_SIZE);
+
 
   }
 
