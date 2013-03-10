@@ -44,6 +44,7 @@ class FrontController_Auth implements CoreInterfaceFrontController
     'Cv' => self::ALL_METHODS_ARE_PUBLIC,
     'RobotRock' => self::ALL_METHODS_ARE_PUBLIC,
     'Game_Main' => self::ALL_METHODS_ARE_PUBLIC,
+    'Game_Test' => self::ALL_METHODS_ARE_PUBLIC,
   );
   
   public static function preExecute() 
