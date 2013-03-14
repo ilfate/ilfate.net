@@ -20,13 +20,21 @@ class Controller_Game_Test extends Controller {
    */
   public function index() 
   {
-    $map = new Game_Map();
+    $map = new Game_Map(1);
 
-    $result = $map->getIdByCoords(1, 1);
+    //Logger::dump($map->getCells(array(array(5, 5),array(4, 4))));
 
-    Logger::dump($result);
+    //Logger::dump($map->test());
 
-
+    for ($i = 0; $i < 100; $i++) {
+      if ($var = Math::chanses(array('k' => 1, 'v' => 4))) {
+        if (!isset($data[$var])) {
+          $data[$var] = 0;
+        }
+        $data[$var]++;
+      }
+    }
+    Logger::dump($data);
     return array(
       'mode' => Request::EXECUTE_MODE_HTTP,
       'tpl' => 'Game/index.tpl'

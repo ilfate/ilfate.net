@@ -14,6 +14,3 @@ class Logger extends ModuleLogger
 {
   
 }
-
-
-?>

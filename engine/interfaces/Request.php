@@ -10,7 +10,8 @@
  *
  * @author ilfate
  */
-interface CoreInterfaceRequest {
+interface CoreInterfaceRequest
+{
   
   public function getPost();
   public function getGet();

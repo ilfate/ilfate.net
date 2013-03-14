@@ -37,7 +37,7 @@ function ilfate_autoloader($class)
           echo $e->getMessage();
         }
         //throw new CoreException_Error("The class '$class' or the file '$file' failed to spl_autoload. Reason:" . $e->getMessage());
-        Logger::dump("The class '$class' or the file '$file' failed to spl_autoload. Reason:" . $e->getMessage());
+        Logger::dump("The class '$class' or the file '$file' failed to spl_autoload. Reason:" . $e->getMessage(), 'file');
         exit;
       }
     }
@@ -45,7 +45,7 @@ function ilfate_autoloader($class)
   } else {
     //trigger_error("The class '$class' or the file '$file' failed to spl_autoload", E_USER_WARNING);
     //throw new CoreException_Error("The class '$class' or the file '$file' failed to spl_autoload");
-	  Logger::dump("The class '$class' or the file '$file' failed to spl_autoload.");
+	  Logger::dump("The class '$class' or the file '$file' failed to spl_autoload.", 'file');
     return FALSE;
   }
 

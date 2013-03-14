@@ -146,9 +146,9 @@ class CoreLogger
     $content = ob_get_clean();
     
     if(self::$variable_logging == self::VARIABLES_OUTPUT || $force_out) {
-      echo $content;
+      echo  $content ;
     } else {
-      self::$variables_container[] = $content;
+      self::$variables_container[] = '<pre>' . $content . '</pre>';
     }
   }
   
@@ -169,6 +169,3 @@ class CoreLogger
       FILE_APPEND);
   }
 }
-
-
-?>

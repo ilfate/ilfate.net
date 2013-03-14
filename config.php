@@ -28,6 +28,6 @@ return array(
     'dbname' => 'ilfate',
     'host'   => 'localhost',
     'login'  => 'root',
-    'pass'  =>  '',
+    'pass'  =>  '12317233',
   )
 );
