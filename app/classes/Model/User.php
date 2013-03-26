@@ -58,6 +58,18 @@ class Model_User extends Model
     $user['id'] = self::insert($user);
     return new Model_User($user);
   }
+
+  public static function createGuest()
+  {
+    $user = array(
+      'name'              => 'Guest',
+      'last_visit'        => time(),
+      'registation_time'  => time(),
+      'cookie'            => self::genCookie()
+    );
+    $user['id'] = self::insert($user);
+    return new Model_User($user);
+  }
   
   /**
    * ecode password to keep it in database

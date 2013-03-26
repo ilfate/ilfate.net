@@ -44,7 +44,6 @@ class FrontController_Auth implements CoreInterfaceFrontController
     'Cv' => self::ALL_METHODS_ARE_PUBLIC,
     'RobotRock' => self::ALL_METHODS_ARE_PUBLIC,
     'Game_Main' => self::ALL_METHODS_ARE_PUBLIC,
-    'Game_Test' => self::ALL_METHODS_ARE_PUBLIC,
   );
   
   public static function preExecute() 
@@ -71,9 +70,12 @@ class FrontController_Auth implements CoreInterfaceFrontController
     
     if (empty(self::$current_user)) {
       // it is guest here
-      if (!self::isRoutePublic()) {
-        Helper::redirect('Auth', 'needRegistration', array('access_restricted' => true));
-      }
+      // create guset account
+      self::$current_user = Model_User::createGuest();
+      Controller_Auth::auth(self::$current_user);
+//      if (!self::isRoutePublic()) {
+//        Helper::redirect('Auth', 'needRegistration', array('access_restricted' => true));
+//      }
     } 
   }
   
@@ -115,6 +117,14 @@ class FrontController_Auth implements CoreInterfaceFrontController
   public static function getUser()
   {
     return self::$current_user;
+  }
+
+  public static function get($val)
+  {
+    if (isset(self::$current_user->$val)) {
+      return self::$current_user->$val;
+    }
+    return null;
   }
   
   

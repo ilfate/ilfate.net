@@ -128,12 +128,12 @@ class Controller_Main extends Controller {
   
   public function photo()
   {
-  $image = Service::getRequest()->getParameter('photo');
-  if(!$image) 
-  {
-    $image = 1;
-  }
-  Js::add(Js::C_ONLOAD, 'Photo.createRows(800,220,'.$image.')');
+    $image = Service::getRequest()->getParameter('photo');
+    if(!$image)
+    {
+      $image = 1;
+    }
+    Js::add(Js::C_ONLOAD, 'Photo.createRows(800,220,'.$image.')');
     return array(
       'images_gallery' => array(
         array('img' => '/images/my/tu1.jpg'),
@@ -172,5 +172,3 @@ class Controller_Main extends Controller {
     );
   }
 }
-
-?>

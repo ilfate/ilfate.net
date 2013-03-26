@@ -98,30 +98,6 @@ CanvasActions = function() {
     this.container.addChild(monster_container);
   }
   
-  this.circle_t = function () {
-    
-    circle = new createjs.Shape();
-    circle.graphics.beginFill("red").drawCircle(0, 0, 50);
-    circle.x = 100;
-    circle.y = 100;
-    circle.onTick = function(elapsedTime) {
-      if(elapsedTime) {
-        this.x += elapsedTime/1000*100;
-        if(this.x > CanvasActions.stage.canvas.width) this.x = 0;
-      }
-      info(elapsedTime);
-    }
-    this.stage.addChild(circle);
-    // stage.addChild(new createjs.Shape()).setTransform(100,100).graphics.f("red").dc(0,0,50);
-    
-    this.addTick(function(elapsedTime){
-      // move 100 pixels per second (elapsedTimeInMS / 1000msPerSecond * pixelsPerSecond):
-      // 
-      // this will log a steadily increasing value:
-//      console.log("FPS: "+createjs.Ticker.getMeasuredFPS());
-    });
-  }
-  
   this.addObject = function(obj, name) {
     this.objects.push(obj);
     this.object_names.push(name);
@@ -1155,6 +1131,17 @@ IL.Animation = function(type)
   {
     return this.last_tic;
   }
+}
+
+
+IL.MapData = function ()
+{
+    this.map = [];
+
+    this.set = function(x, y, cell)
+    {
+        this.map[x][y] = cell;
+    }
 }
 
 $(document).keypress(function(event) {

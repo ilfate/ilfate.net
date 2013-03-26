@@ -38,7 +38,7 @@
   <script type="text/javascript" src="/js/form.js"></script>
   <script type="text/javascript" src="/js/pages.js"></script>
   
-  <script type="text/javascript" src="/js/canvasGame.js"></script>
+  <script type="text/javascript" src="/js/canvasActions.js"></script>
   
   
   

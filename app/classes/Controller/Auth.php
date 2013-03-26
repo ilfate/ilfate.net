@@ -91,7 +91,7 @@ class Controller_Auth extends Controller
   
   public function logOut()
   {
-    Service::getRequest()->setSession(Service_Auth::SESSION_AUTH_KEY, null);
+    Service::getRequest()->setSession(FrontController_Auth::SESSION_AUTH_KEY, null);
     Runtime::setCookie(Service_Auth::COOKIE_AUTH_KEY, null, null);
     return array(
       'sucsess' => true,
@@ -101,10 +101,10 @@ class Controller_Auth extends Controller
   }
   
   
-  private static function auth(Model_User $user)
+  public static function auth(Model_User $user)
   {
-    Service::getRequest()->setSession(Service_Auth::SESSION_AUTH_KEY, array('id' => $user->id, 'time' => time()));
-    Runtime::setCookie(Service_Auth::COOKIE_AUTH_KEY, $user->cookie, Service_Auth::COOKIE_AUTH_KEY_EXPIRES);
+    Service::getRequest()->setSession(FrontController_Auth::SESSION_AUTH_KEY, array('id' => $user->id, 'time' => time()));
+    Runtime::setCookie(FrontController_Auth::COOKIE_AUTH_KEY, $user->cookie, FrontController_Auth::COOKIE_AUTH_KEY_EXPIRES);
   }
   
   

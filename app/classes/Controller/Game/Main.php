@@ -32,7 +32,7 @@ class Controller_Game_Main extends Controller {
     FrontController_Sidebar::addSideBar('Game_Main', 'gameBlankinfo');
     Js::add(Js::C_ONLOAD, 'CanvasActions.init()');
     return array(
-      'layout' => array('html.tpl', 'Game/head.tpl', 'layout.tpl'),
+      'layout' => array('html.tpl', 'Game/headBlank.tpl', 'layout.tpl'),
       'mode' => Request::EXECUTE_MODE_HTTP,
       'tpl' => 'Game/gameBlank.tpl'
     );

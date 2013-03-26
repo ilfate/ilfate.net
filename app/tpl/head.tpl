@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.min.css" type="text/css" media="screen" >
   
   <link rel="stylesheet" href="/css/main.css" type="text/css" />
-  
+  <link rel="stylesheet" href="/css/game.css" type="text/css" />
+
 <!--  <link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css"> 
   <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">-->
   

@@ -44,6 +44,11 @@ class Model_Map extends Model
     return self::getList(' `id` IN ( ' . implode(',', $ids) . ' ) ');
   }
 
+  public static function createChunk($chunk) {
+    unset($chunk['cellsParsed']);
+    self::insert($chunk);
+  }
+
 
 }
 

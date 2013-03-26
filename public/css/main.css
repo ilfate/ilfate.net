@@ -39,6 +39,10 @@ body {
   box-shadow: 0 0 6px 0 #384541;
 }
 
+.clear{
+    clear: both;
+}
+
 .table-centrated {}
 .table-centrated th, .table-centrated td{
   text-align: center;
