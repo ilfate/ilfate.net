@@ -6,12 +6,9 @@
  */
 
 
-class Game_Unit_Common extends Game_Unit_Base {
+class Game_Unit_Common extends Game_Unit_Base
+{
 
-  public function action($action, $params = [])
-  {
-
-  }
 
   public function delete()
   {

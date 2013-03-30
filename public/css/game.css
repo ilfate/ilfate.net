@@ -22,14 +22,14 @@ main theme colors
 }
 
 .cell {
-    width: 4px;
-    height: 4px;
+    width: 16px;
+    height: 16px;
     float: left;
 }
 
 .biom {
-  width: 16px;
-  height: 16px;
+  width: 64px;
+  height: 64px;
   float: left;
   position: relative;
   border: 0px solid;

@@ -58,8 +58,10 @@ CanvasActions = function() {
 //      {src:"/images/game/tile1_damaged.png",id:"floor_d"},
 //      {src:"/images/game/tile2.png",id:"empty"},
 //      {src:"/images/game/block.png",id:"wall"},
-      {src:"/images/game/map.png",id:"map"}
-    ];  
+
+      {src:"/images/game/map.png",id:"robot"},
+      {src:"/images/game/tileset.jpg",id:"map"}
+    ];
   }
   
   this.createMap = function() 
@@ -142,6 +144,12 @@ CanvasActions = function() {
     //CanvasActions.assets.push(event);
   this.addObject(event.result, event.id);
   }
+
+  this.actionResult = function(data)
+  {
+    this.map.setActionResult(data.action, data.data);
+    this.robot.setActionResult(data.action, data.data);
+  }
 }
 
 CanvasActions = new CanvasActions();
@@ -176,13 +184,12 @@ IL.Map = function(container, mapData)
   this.setCamera = function(x, y, speed) 
   {
     // if new point is out of vision radius we set this new point to our vision radius border
-    if(Math.abs(x - this.center.x) > this.vision_radius * this.cell_width ) {
-        x = this.center.x + this.vision_radius * this.cell_width * ( this.center.x > this.camera.x ? -1 : 1 );
-      }
-    if(Math.abs(y - this.center.y) > this.vision_radius * this.cell_width ) {
-        y = this.center.y + this.vision_radius * this.cell_width * ( this.center.y > this.camera.y ? -1 : 1 );
-//        info(y);
-      }
+//    if(Math.abs(x - this.center.x) > this.vision_radius * this.cell_width ) {
+//        x = this.center.x + this.vision_radius * this.cell_width * ( this.center.x > this.camera.x ? -1 : 1 );
+//      }
+//    if(Math.abs(y - this.center.y) > this.vision_radius * this.cell_width ) {
+//        y = this.center.y + this.vision_radius * this.cell_width * ( this.center.y > this.camera.y ? -1 : 1 );
+//      }
     if(!speed) {
       this.camera.x = x;
       this.camera.y = y;
@@ -195,6 +202,24 @@ IL.Map = function(container, mapData)
     }
     this.needDraw = true;
   }
+
+  this.setActionResult = function(action, data)
+  {
+    for (var x in data.map) {
+        for (var y in data.map[x]) {
+
+            if (this.mapData.map[x] == undefined) {
+                this.mapData.map[x] = {};
+                this.mapData.map[x][y] = data.map[x][y];
+            } else {
+                this.mapData.map[x][y] = data.map[x][y];
+            }
+        }
+    }
+    this.needDraw = true;
+    this.setCamera(data.unit.x * this.cell_width, data.unit.y * this.cell_width, 0);
+  }
+
   this.move = function(x, y) 
   {
     this.center.x += x * this.cell_width;
@@ -225,18 +250,20 @@ IL.Map = function(container, mapData)
     var x = 0;
     var y = 0;
     switch(type) {
-      case "a1":x = 0;y = 0;break;
-      case "a2":x = 8;y = 5;break;
-      case "a3":x = 9;y = 6;break;
+      case "a1":x = 1;y = 2;break;
+      case "a2":x = 0;y = 1;break;
+      case "a3":x = 2;y = 3;break;
       
-      case "a4":x = 0;y = 1;break;
-      case "a5":x = 2;y = 1;break;
+      case "a4":x = 1;y = 0;break;
+      case "a5":x = 2;y = 0;break;
 
-      case "a6":x = 3;y = 2;break;
-      case "a7":x = 4;y = 2;break;
-      case "a8":x = 2;y = 2;break;
+      case "a6":x = 0;y = 2;break;
+      case "a7":x = 3;y = 2;break;
 
-      case "w1":x = 5;y = 2;break;
+
+      case "w1":x = 1;y = 1;break;
+
+      case "t1":x = 2;y = 1;break;
 
       case "monst_1":x = 1;y = 8;break;
       case "monst_2":x = 2;y = 8;break;
@@ -251,6 +278,9 @@ IL.Map = function(container, mapData)
       case "robot_2":x = 0;y = 9;break; 
       case "robot_3":x = 1;y = 9;break; 
     }
+      if(x == 0 & y == 0) {
+          //info(type);
+      }
     return {"x": x*this.cell_width,"y":y*this.cell_width};
   }
   
@@ -390,24 +420,30 @@ IL.Map = function(container, mapData)
   this.loadCell = function(x, y)
   {
 //    var rand = Math.floor(Math.random() * this.cells_options.length);
-    var absX = x;
-    var absY = y;
+    var coords = this.absCoords(x, y);
 
-    while(absX <= 0) {
-        absX += this.mapData['info']['planet_size_x'];
-    }
-    while(absY <= 0) {
-        absY += this.mapData['info']['planet_size_y'];
-    }
-   if(absX > this.mapData['info']['planet_size_x']) {
-       absX = absX % this.mapData['info']['planet_size_x'];
-   }
-   if(absY > this.mapData['info']['planet_size_y']) {
-       absY = absY % this.mapData['info']['planet_size_y'];
-   }
-
-    this.addSimpleCell(x, y, this.mapData['map'][absX][absY]);
+    this.addSimpleCell(x, y, this.mapData['map'][coords.x][coords.y]);
     return this.getCell(x, y);
+  }
+
+  this.absCoords = function(x, y)
+  {
+      var absX = x;
+      var absY = y;
+
+      while(absX <= 0) {
+          absX += this.mapData['info']['planet_size_x'];
+      }
+      while(absY <= 0) {
+          absY += this.mapData['info']['planet_size_y'];
+      }
+      if(absX > this.mapData['info']['planet_size_x']) {
+          absX = absX % this.mapData['info']['planet_size_x'];
+      }
+      if(absY > this.mapData['info']['planet_size_y']) {
+          absY = absY % this.mapData['info']['planet_size_y'];
+      }
+      return {'x' : absX, 'y' : absY};
   }
   
   this.getMiddlePoint = function()
@@ -420,10 +456,22 @@ IL.Map = function(container, mapData)
     var pixel_radius = this.map_radius * this.cell_width;
     var left_border = middle.x - pixel_radius;
     var top_border = middle.y - pixel_radius;
-    if(left_border < 0) {var left_cut = -(left_border % this.cell_width);} 
-    else {var left_cut = (this.cell_width - left_border % this.cell_width);}
-    if(top_border < 0) {var top_cut = -(top_border % this.cell_width);} 
-    else {var top_cut = (this.cell_width - top_border % this.cell_width);}
+
+    var left_division = left_border % this.cell_width;
+    if(left_division) {
+        if(left_border < 0) { var left_cut = -(left_division); }
+        else { var left_cut = (this.cell_width - left_division); }
+    } else {
+        var left_cut = 0;
+    }
+
+    var top_division = top_border % this.cell_width;
+    if(top_division) {
+        if(top_border < 0) { var top_cut = -(top_division);}
+        else { var top_cut = (this.cell_width - top_division);}
+    } else {
+        var top_cut = 0;
+    }
 
     if(left_cut) {
       this.container.x = this.container_def_point.x - (this.cell_width - left_cut);
@@ -438,43 +486,44 @@ IL.Map = function(container, mapData)
 
     var cells_to_left = (Math.floor(left_border / this.cell_width));
     var cells_to_top = (Math.floor(top_border / this.cell_width));
-    var row_end = cells_to_left + this.map_radius*2 + 1 + ((left_cut == 0) ? 0 : 1);
-    var col_end = cells_to_top + this.map_radius*2 + 1 + ((top_cut == 0) ? 0 : 1);
+    var row_end = cells_to_left + (this.map_radius * 2) + 1 + ((left_cut == 0) ? 0 : 1);
+    var col_end = cells_to_top + (this.map_radius * 2) + 1 + ((top_cut == 0) ? 0 : 1);
 
       var window_x = -this.map_radius;
       var window_y = -this.map_radius;
-      for(var x = cells_to_left; x < row_end; x++,window_x++)
+
+      for(var y = cells_to_top; y < col_end; y++,window_y++)
       {
-        window_y = -this.map_radius;
-        for(var y = cells_to_top; y < col_end; y++,window_y++)
+        window_x = -this.map_radius;
+        for(var x = cells_to_left; x < row_end; x++,window_x++)
         {
           var cell = this.getCell(x, y);
           if(!cell) {
             cell = this.loadCell(x, y);
           }
           cell.set(window_x, window_y);
-      if(left_cut) {
-        if(x == cells_to_left) {
-          cell.cutX(left_cut - this.cell_width);
-        } else if(x == row_end-1) {
-          cell.cutX(left_cut);
-        } else {
-          cell.cutX(0);
-        }
-      } else {
-        cell.cutX(0);
-      }
-      if(top_cut) {
-        if(y == cells_to_top) {
-          cell.cutY(top_cut - this.cell_width);
-        } else if(y == col_end-1) {
-          cell.cutY(top_cut);
-        } else {
-          cell.cutY(0);
-        }
-      } else {
-        cell.cutY(0);
-      }
+          if(left_cut) {
+            if(x == cells_to_left) {
+              cell.cutX(left_cut - this.cell_width);
+            } else if(x == row_end-1) {
+              cell.cutX(left_cut);
+            } else {
+              cell.cutX(0);
+            }
+          } else {
+            cell.cutX(0);
+          }
+          if(top_cut) {
+            if(y == cells_to_top) {
+              cell.cutY(top_cut - this.cell_width);
+            } else if(y == col_end-1) {
+              cell.cutY(top_cut);
+            } else {
+              cell.cutY(0);
+            }
+          } else {
+            cell.cutY(0);
+          }
       }
     }
   }
@@ -770,7 +819,7 @@ IL.Cell = function(Point, type)
         }
 
         this.bitmap.x = width * this.window_point.x + this.cutLeft;
-        this.bitmap.y = width * this.window_point.y + this.cutTop;
+        this.bitmap.y = -width * this.window_point.y + this.cutTop;
         this.bitmap.sourceRect.x = this.sprite.x + this.cutLeft;
         this.bitmap.sourceRect.y = this.sprite.y + this.cutTop;
         this.bitmap.sourceRect.width = width - this.cutLeft - this.cutRight;
@@ -799,7 +848,7 @@ IL.Robot = function(container, map, mapData)
     this.mapData = mapData;
     this.container = container;
     this.map = map;
-    this.direction = 0;
+    this.direction = this.mapData.unit.d;
     this.needDraw = true;
 
     this.container.x = this.map.container.x + this.map.cell_width / 2;
@@ -808,11 +857,33 @@ IL.Robot = function(container, map, mapData)
     this.point = new IL.Point(this.mapData.unit.x, this.mapData.unit.y);
     this.animation = new IL.Animation("move");
 
-    this.img =  new createjs.Bitmap(CanvasActions.getObject("map"));
+    this.img =  new createjs.Bitmap(CanvasActions.getObject("robot"));
     this.img.sourceRect = new createjs.Rectangle(9 * this.map.cell_width,8 * this.map.cell_width, 64, 64);
     this.img.regX = this.map.cell_width / 2;
     this.img.regY = this.map.cell_width / 2;
 
+    this.isActionInProgress = false;
+
+    this.action = function(action)
+    {
+        if(this.isActionInProgress) return false;
+        this.isActionInProgress = true;
+        var coords = this.map.absCoords(this.point.x, this.point.y);
+        Ajax.json('/Game_Map/action', {
+            'data': {
+                'action' : action,
+                'unit' : {'x' : coords.x, 'y' : coords.y}
+            },
+            'callBack' : function(data){ CanvasActions.actionResult(data) }
+        });
+    }
+
+    this.setActionResult = function(action, data)
+    {
+        this.point.set(data.unit.x, data.unit.y);
+        this.direction = data.unit.d;
+        this.isActionInProgress = false;
+    }
 
     this.move = function(x, y)
     {
@@ -835,6 +906,7 @@ IL.Robot = function(container, map, mapData)
         }
         return this;
     }
+
     this.rotate = function(side)
     {
         if(this.animation.isRunning()) return false;
@@ -862,6 +934,7 @@ IL.Robot = function(container, map, mapData)
 
         return this;
     }
+
     this.forward = function()
     {
         switch(this.direction){
@@ -879,6 +952,7 @@ IL.Robot = function(container, map, mapData)
                 break;
         }
     }
+
     this.backward = function()
     {
         switch(this.direction){
@@ -896,6 +970,7 @@ IL.Robot = function(container, map, mapData)
                 break;
         }
     }
+
     this.destroyWall = function()
     {
         var next = this.point.next(this.direction);
@@ -911,6 +986,7 @@ IL.Robot = function(container, map, mapData)
             this.map.update();
         }
     }
+
     this.getPosition = function()
     {
         if(this.animation.isRunning() && this.animation.isType("move"))
@@ -920,6 +996,7 @@ IL.Robot = function(container, map, mapData)
             return new IL.Point(this.point.x * this.map.cell_width, this.point.y * this.map.cell_width);
         }
     }
+
     this.checkAngle = function()
     {
         if(this.animation.isRunning() && this.animation.isType("rotate")) {
@@ -928,6 +1005,7 @@ IL.Robot = function(container, map, mapData)
             this.img.rotation = 90 * this.direction;
         }
     }
+
     this.draw = function()
     {
         if(this.needDraw)
@@ -948,6 +1026,7 @@ IL.Robot = function(container, map, mapData)
             }
         }
     }
+
     this.update = function()
     {
         this.needDraw = true;
@@ -978,16 +1057,16 @@ $(document).keypress(function(event) {
     case 13:  // Enter
       break;
     case 119 : // w
-      CanvasActions.robot.forward();
+      CanvasActions.robot.action('move');
       break;
     case 97 : // a
-      CanvasActions.robot.rotate(-1);
+      CanvasActions.robot.action('rotateLeft');
       break;
     case 115 : // s
       CanvasActions.robot.backward();
       break;
     case 100 : // d
-      CanvasActions.robot.rotate(1);
+      CanvasActions.robot.action('rotateRight');
       break;
     case 32 :  // space
       break;
@@ -1002,16 +1081,16 @@ $(document).keypress(function(event) {
       switch(event.charCode)
       {
         case 119 : // w
-          CanvasActions.robot.forward();
+          CanvasActions.robot.action('move');
           break;
         case 97 : // a
-          CanvasActions.robot.rotate(-1);
+          CanvasActions.robot.action('rotateLeft');
           break;
         case 115 : // s
           CanvasActions.robot.backward();
           break;
         case 100 : // d
-          CanvasActions.robot.rotate(1);
+          CanvasActions.robot.action('rotateRight');
           break;
         case 32 :  // space
           break;

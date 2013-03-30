@@ -28,8 +28,8 @@ class Controller_Game_Map extends Controller {
     $list = [];
     $startX = 1;
     $startY = 1;
-    $rangeX = 38;
-    $rangeY = 38;
+    $rangeX = 11;
+    $rangeY = 7;
     for ($i = $startY; $i < $rangeY; $i++) {
       for ($i2 = $startX; $i2 < $rangeX; $i2++) {
         $list[] = [$i2, $i];
@@ -88,9 +88,17 @@ class Controller_Game_Map extends Controller {
       return array('error' => 'sinc error');
     }
     if (!$unit->isActionPossible($post['action'])) {
-      return array('error' => 'action is not possible');
+      return array('error' => $unit->getLastError());
     }
 
+    $return = $unit->action($post['action']);
+
+    $data = $unit->getDataForView();
+
+    return array(
+      'action' => $post['action'],
+      'data' => $data
+    );
   }
 
 

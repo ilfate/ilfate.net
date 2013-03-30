@@ -54,5 +54,10 @@ class Model_Unit extends Model
   {
     self::update(array('active' => $activity), array('id' => $id_unit));
   }
+
+  public static function update($id_unit, $set)
+  {
+    parent::update($set, array('id' => $id_unit));
+  }
 }
 

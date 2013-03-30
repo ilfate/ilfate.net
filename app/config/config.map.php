@@ -20,8 +20,8 @@ return array(
     ],
     'planets' => [
       1 => [
-        'x' => 80,
-        'y' => 40,
+        'x' => 10,
+        'y' => 6,
       ],
     ],
     'default_biom' => 'a',
@@ -36,13 +36,10 @@ return array(
           'a1' => 40, // grass
           'a2' => 12, // dirt
           'a3' => 3,  //rocks
-          'a4' => 3,  //rocks2,
-          'a5' => 3,  //rocks3,
-          'a6' => 3,  //hole
-          'a7' => 2,  //pile,
-          'a8' => 2,  //pile2,
-          'a9' => 10,  //trees,
-          '12' => 2,  //puddle,
+          'a4' => 3,  //hole
+          'a5' => 2,  //pile,
+          'a6' => 10,  //trees,
+          'a7' => 2,  //puddle,
           'w1' => 3,  //water,
           's1' => 0,  //sand,
           't1' => 0.4, //resourse breaching
@@ -59,13 +56,10 @@ return array(
           'a1' => 0, // grass
           'a2' => 0, // dirt
           'a3' => 0,  //rocks
-          'a4' => 0,  //rocks2,
-          'a5' => 0,  //rocks3,
-          'a6' => 0,  //hole
-          'a7' => 0,  //pile,
-          'a8' => 0,  //pile2,
-          'a9' => 0,  //trees,
-          '12' => 0,  //puddle,
+          'a4' => 0,  //hole
+          'a5' => 0,  //pile,
+          'a6' => 0,  //trees,
+          'a7' => 0,  //puddle,
           'w1' => 5, // water
           's1' => 0, //sand
           't1' => 0, //resourse breaching
@@ -80,13 +74,10 @@ return array(
           'a1' => 25, // grass
           'a2' => 15, // dirt
           'a3' => 55,  //rocks
-          'a4' => 3,  //rocks2,
-          'a5' => 3,  //rocks3,
-          'a6' => 10,  //hole
-          'a7' => 2,  //pile,
-          'a8' => 2,  //pile2,
-          'a9' => 2,  //trees,
-          '12' => 2,  //puddle,
+          'a4' => 10,  //hole
+          'a5' => 2,  //pile,
+          'a6' => 2,  //trees,
+          'a7' => 2,  //puddle,
           'w1' => 0,  //water,
           's1' => 0,  //sand,
           't1' => 0.4, //resourse breaching

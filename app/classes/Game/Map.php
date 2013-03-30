@@ -64,6 +64,18 @@ class Game_Map {
     ];
   }
 
+  public function getNextCoords($x, $y, $d)
+  {
+    switch($d) {
+      case 0 : $next =  [$x, $y + 1]; break;
+      case 1 : $next =  [$x + 1, $y]; break;
+      case 2 : $next =  [$x, $y - 1]; break;
+      case 3 : $next =  [$x - 1, $y]; break;
+    }
+    $this->prepareCellCoordinats($next[0], $next[1]);
+    return $next;
+  }
+
 
   public function getCell($x, $y)
   {
@@ -177,14 +189,18 @@ class Game_Map {
         }
       }
     }
+
     if ($forLoad) {
       $this->loadChunks($forLoad, $isMarkToGenerate);
     }
-    foreach ($list as $pair) {
-      if (isset($this->cells[$pair[0]]) && isset($this->cells[$pair[0]][$pair[1]])) {
-        $return[$pair[0]][$pair[1]] = $this->cells[$pair[0]][$pair[1]];
+    //Logger::dump($list);
+
+    foreach ($list as $pair2) {
+
+      if (isset($this->cells[$pair2[0]]) && isset($this->cells[$pair2[0]][$pair2[1]])) {
+        $return[$pair2[0]][$pair2[1]] = $this->cells[$pair2[0]][$pair2[1]];
       } else {
-        $return[$pair[0]][$pair[1]] = '00';
+        $return[$pair2[0]][$pair2[1]] = '00';
       }
     }
     return $return;

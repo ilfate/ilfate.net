@@ -16,7 +16,8 @@ Ajax = function() {
     if(!options) options = {};
     options.url = url;
     options.dataType = "json";
-
+    if(!options.params) options.params = '';
+    options.params += '__csrf=' + Ajax.getCSRF();
     this.execute(options);
   }
   /**
@@ -68,6 +69,7 @@ Ajax = function() {
     } else {
       opt.type = "POST";
     }
+
     if(options.dataType) {
       opt.dataType = options.dataType;
     } else {
@@ -105,7 +107,7 @@ Ajax = function() {
     }
     if(n_cb >= 0)
     {
-      this.callBack[n_cb]();
+      this.callBack[n_cb](data);
     }
     F.handleEvent('ajaxloadcompleted');
   }
