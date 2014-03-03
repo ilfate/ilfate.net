@@ -1,13 +1,29 @@
-<div class="navbar navbar-fixed-top">
-  <div class="">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
-      <a class="brand" href="/">Ilfate</a>
-      <ul class="nav">
-        <? foreach ($ilfate_menu as $menu_el) { ?> 
-          <?= $this::inc('interface/top_menu_el.tpl', array('element' => $menu_el))?>
-        <? } ?>
-        <li><a href="#!/error"><?=$access_restricted ? 'RESRICTED' : ''?></a></li>
-      </ul>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Ilfate</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                <ul class="nav navbar-nav">
+                    <? foreach ($ilfate_menu as $menuElement) { ?>
+                    <li <?= isset($menuElement['active'])? 'class="active"':''?>>
+                        <a href="<?= Helper::url($menuElement['class'], $menuElement['method'])?>">
+                            <?= $menuElement['text']?>
+                        </a>
+                    </li>
+                    <? } ?>
+                </ul>
+            </div>
+        </div>
+        <!--
       <? if(FrontController_Auth::isAuth()) { ?>
         <div class="btn-group pull-right">
         <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -27,7 +43,7 @@
      
         
       <? } ?>
+      -->
     </div>
-  </div>
-</div>
+</nav>
 

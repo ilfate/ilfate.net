@@ -53,13 +53,13 @@ class Controller_Game_Map extends Controller {
 
   public function map()
   {
-    $unit = $this->getUserUnit();
+    $map = new Game_Map(1);
+    $unit = $this->getUserUnit($map);
 
-    $data = $unit->getDataForView();
+    $units_all = $this->getUnitsInArea($unit->x, $unit->y, $map);
+    $units = $units_all['units'];
+    $data = $unit->getDataForView($units);
 
-
-    $grid = [];
-    //Js::add(Js::C_ONLOAD, 'IL.MapData.set(\''..'\')');
     Js::add(Js::C_ONLOAD, 'CanvasActions.init('.json_encode($data).')');
     return array(
       'layout' => array('html.tpl', 'Game/head.tpl', 'layout.tpl'),
@@ -74,15 +74,19 @@ class Controller_Game_Map extends Controller {
   public function action()
   {
     $post = Service::getRequest()->getPost();
-    $unit = $this->getUserUnit();
-    if (!$unit) {
-      return array();
-    }
     if (!$post['action']) {
       return array('error' => 'no action');
     }
     if (empty($post['unit']) || empty($post['unit']['x']) || empty($post['unit']['y'])) {
       return array('error' => 'missing unit data');
+    }
+    $map = new Game_Map(1);
+    $data = $this->getUnitsInArea($post['unit']['x'], $post['unit']['y'], $map);
+    extract($data); // $unit and $units
+    /** @var $unit Game_Unit_Base */
+
+    if(empty($unit)) {
+      return array('error' => 'unit load error');
     }
     if (!$this->checkSincronization($unit, $post['unit'])) {
       return array('error' => 'sinc error');
@@ -93,7 +97,7 @@ class Controller_Game_Map extends Controller {
 
     $return = $unit->action($post['action']);
 
-    $data = $unit->getDataForView();
+    $data = $unit->getDataForView($units);
 
     return array(
       'action' => $post['action'],
@@ -109,7 +113,7 @@ class Controller_Game_Map extends Controller {
   /**
    * @return Game_Unit_Base
    */
-  private function getUserUnit()
+  private function getUserUnit($map)
   {
     $id_user = FrontController_Auth::get('id');
     $unitData = Model_Unit::getActiveUnit($id_user);
@@ -120,15 +124,43 @@ class Controller_Game_Map extends Controller {
       Helper::redirect('Game_Test', 'map');
     }
 
+    return $this->initUnit($unitData, $map);
+  }
+
+  /**
+   * @param $unitData
+   * @param $map
+   * @return Game_Unit_Base
+   */
+  private function initUnit($unitData, $map)
+  {
     // get unit class depends on unit type
     $unitClass = Service::getConfig()->get('all', 'units')['units'][$unitData->id_type]['class'];
-    $map = new Game_Map(1);
-
-    /**
-     * @val Game_Unit_Base $unit
-     */
     $unit = new $unitClass($unitData, $map);
     return $unit;
+  }
+
+  /**
+   * @param $x
+   * @param $y
+   * @param $map Game_Map
+   * @return array|bool
+   */
+  private function getUnitsInArea($x, $y, $map)
+  {
+    $units = Model_Unit::getAllUnits($map->getScreenChunks($x, $y));
+    if (!$units) {
+      return false;
+    }
+    $return = ['unit' => '', 'units' => []];
+    foreach ($units as $unit) {
+      if ($unit->id_user == FrontController_Auth::get('id') && $unit->x == $x && $unit->y == $y && $unit->active) {
+        $return['unit'] = $this->initUnit($unit, $map);
+      } else {
+        $return['units'][] = $unit;
+      }
+    }
+    return $return;
   }
 
 

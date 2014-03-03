@@ -42,6 +42,7 @@ CanvasActions = function() {
   {
     this.createMap();
     this.createRobot();
+    this.createObjectHandler();
 //    this.createMonster();
     
     this.stage.addChild(this.container);  
@@ -76,6 +77,21 @@ CanvasActions = function() {
       CanvasActions.map.draw();
     });
     this.container.addChild(map_container);    
+  }
+
+  this.createObjectHandler = function()
+  {
+    var objects_container = new createjs.Container();
+    objects_container.x = this.width/2 - this.mapData['info']['cell_size'] / 2;
+    objects_container.y = this.height/2 - this.mapData['info']['cell_size'] / 2;
+
+    this.objectHandler = new IL.ObjectHandler(objects_container, this.map, this.mapData);
+    this.objectHandler.draw();
+
+    this.addTick(function(elapsedTime){
+      CanvasActions.objectHandler.draw();
+    });
+    this.container.addChild(objects_container);
   }
   
   this.createRobot = function()
@@ -149,6 +165,7 @@ CanvasActions = function() {
   {
     this.map.setActionResult(data.action, data.data);
     this.robot.setActionResult(data.action, data.data);
+    this.objectHandler.setActionResult(data.action, data.data);
   }
 }
 
@@ -170,25 +187,24 @@ IL.Map = function(container, mapData)
   this.cells = [];
   this.cell_idx = [];
   this.binded_objects = [];
-  this.cell_width = this.mapData['info']['cell_size'];
-  this.map_radius = this.mapData['info']['screen_size'];
-  this.vision_radius = 3;
+  this.cell_width = mapData['info']['cell_size'];
+  this.map_radius = mapData['info']['screen_size'];
+  this.planet_size = {'x' : mapData.info.planet_size_x, 'y' : mapData.info.planet_size_y};
   this.x = 0;
   this.y = 0;
-  this.camera = new IL.Point(this.mapData['unit']['x'] * this.cell_width, this.mapData['unit']['y'] * this.cell_width);
-  this.center = new IL.Point(0, 0);
-  this.centerPoint = new IL.Point(0, 0);
+  this.camera = new IL.Point(mapData['unit']['x'] * this.cell_width, mapData['unit']['y'] * this.cell_width);
+  this.center = new IL.Point(mapData.unit.x, mapData.unit.y);
   
   this.animation = new IL.Animation("move");
 
   this.setCamera = function(x, y, speed) 
   {
     // if new point is out of vision radius we set this new point to our vision radius border
-//    if(Math.abs(x - this.center.x) > this.vision_radius * this.cell_width ) {
-//        x = this.center.x + this.vision_radius * this.cell_width * ( this.center.x > this.camera.x ? -1 : 1 );
+//    if(Math.abs(x - this.center.x) > this.map_radius * this.cell_width ) {
+//        x = this.center.x + this.map_radius * this.cell_width * ( this.center.x > this.camera.x ? -1 : 1 );
 //      }
-//    if(Math.abs(y - this.center.y) > this.vision_radius * this.cell_width ) {
-//        y = this.center.y + this.vision_radius * this.cell_width * ( this.center.y > this.camera.y ? -1 : 1 );
+//    if(Math.abs(y - this.center.y) > this.map_radius * this.cell_width ) {
+//        y = this.center.y + this.map_radius * this.cell_width * ( this.center.y > this.camera.y ? -1 : 1 );
 //      }
     if(!speed) {
       this.camera.x = x;
@@ -201,6 +217,11 @@ IL.Map = function(container, mapData)
         .start();
     }
     this.needDraw = true;
+  }
+  this.setCenter = function(x , y)
+  {
+    this.center.set(x , y);
+    return this;
   }
 
   this.setActionResult = function(action, data)
@@ -218,14 +239,13 @@ IL.Map = function(container, mapData)
     }
     this.needDraw = true;
     this.setCamera(data.unit.x * this.cell_width, data.unit.y * this.cell_width, 0);
+    this.setCenter(data.unit.x, data.unit.y);
   }
 
   this.move = function(x, y) 
   {
     this.center.x += x * this.cell_width;
     this.center.y += y * this.cell_width;
-    this.centerPoint.x += x;
-    this.centerPoint.y += y;
     this.setCamera(this.center.x, this.center.y, 250);//(this.map_radius * this.cell_width - this.center.distance(this.camera)) * 5 );
     this.needDraw = true;
   }
@@ -445,6 +465,7 @@ IL.Map = function(container, mapData)
       }
       return {'x' : absX, 'y' : absY};
   }
+
   
   this.getMiddlePoint = function()
   {
@@ -883,6 +904,7 @@ IL.Robot = function(container, map, mapData)
         this.point.set(data.unit.x, data.unit.y);
         this.direction = data.unit.d;
         this.isActionInProgress = false;
+        this.needDraw = true;
     }
 
     this.move = function(x, y)
@@ -1019,7 +1041,6 @@ IL.Robot = function(container, map, mapData)
 
             this.img.x = -this.map.camera.x + position.x;
             this.img.y = -this.map.camera.y + position.y;
-
             this.container.addChild(this.img);
             if(!this.animation.isRunning()) {
                 this.needDraw = false;
@@ -1034,6 +1055,104 @@ IL.Robot = function(container, map, mapData)
 }
 
 
+IL.ObjectHandler = function(container, map, mapData)
+{
+  this.container = container;
+  this.map = map;
+  this.mapData = mapData;
+  this.units = [];
+  this.needToDraw = true;
+
+  this.handleUnits = function(units)
+  {
+    for(var i in this.units) {
+      this.units[i].visible = false;
+    }
+    for(var i in units) {
+      if(this.units[units[i].id] !== undefined) {
+        // unit is exist.
+      } else {
+        // It is new unit
+        units[i].img =  new createjs.Bitmap(CanvasActions.getObject("robot"));
+        units[i].img.sourceRect =
+          new createjs.Rectangle(1 * this.map.cell_width, 8 * this.map.cell_width, this.map.cell_width, this.map.cell_width);
+        this.units[units[i].id] = units[i];
+      }
+      this.units[units[i].id].visible = true;
+    }
+  }
+  this.handleUnits(this.mapData.units);
+
+  this.setActionResult = function(action, data)
+  {
+    this.needToDraw = true;
+    this.handleUnits(data.units);
+  }
+
+  this.getPosition = function(unit, center)
+  {
+    //if(this.animationMove.isRunning() && this.animationMove.isType("move"))
+    //{
+    //  return this.animationMove.getLast();
+    //} else {
+    var dx = (unit.x - center.x);
+    var dy = -(unit.y - center.y);
+    var screen = this.map.map_radius * 2 + 1;
+
+    if(Math.abs(dx) > screen) {
+      dx = dx + (dx/dx * this.map.planet_size.x);
+    }
+    if(Math.abs(dy) > screen) {
+      dy = dy - (dy/dy * this.map.planet_size.y);
+    }
+
+
+      return new IL.Point(dx * this.map.cell_width, dy * this.map.cell_width);
+    //}
+  }
+
+  this.draw = function()
+  {
+    if(this.needToDraw) {
+//    this.action();
+//    if(this.animationMove.isRunning()) {
+//      this.animationMove.tic();
+//    }
+//    this.setType(this.animation.tic());
+
+
+    this.container.removeAllChildren();
+
+    for(var id in this.units) {
+      if(this.units[id].visible) {
+        var unit = this.units[id];
+        var cell = this.map.getCell(unit.x, unit.y);
+        if(!cell) {
+          cell = this.map.loadCell(unit.x, unit.y);
+        }
+
+        var position = this.getPosition(unit, this.map.center);
+        //this.checkAngle();
+        unit.img.x =  position.x + cell.cutLeft;
+        unit.img.y =  position.y - cell.cutTop;
+
+        info('position ' + position.x + ' ' + position.y);
+//        info(unit.img.x + ' ' + unit.img.y);
+  //      this.img.sourceRect.x = this.sprite.x + cell.cutLeft;
+  //      this.img.sourceRect.y = this.sprite.y + cell.cutTop;
+  //      this.img.sourceRect.width = this.map.cell_width - cell.cutLeft - cell.cutRight;
+  //      this.img.sourceRect.height = this.map.cell_width - cell.cutTop - cell.cutBottom;
+        this.container.addChild(unit.img);
+      }
+    }
+
+//    if(!this.animation.isRunning() && ! this.animationMove.isRunning()) {
+//      this.needDraw = false;
+//    }
+      this.needToDraw = false;
+    }
+  }
+}
 
 $(document).keypress(function(event) {
 //  info(event);
