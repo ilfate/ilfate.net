@@ -5,10 +5,10 @@
 */?>
 <div class="CVpage">
 <div class="row">
-  <div class="hero-unit span5">
+  <div class="hero-unit col-md-5">
     <h1>Rubinchik Ilya - CV</h1>
   </div>
-  <div class="span3">
+  <div class="col-md-3">
     <a href="http://ilfate.net">http://ilfate.net</a><br>
     ilfate@gmail.com<br>
     Skype: illidanfate<br>
@@ -18,7 +18,7 @@
 </div>
 
 <div class="row">
-  <div class="span4">
+  <div class="col-md-5">
     <div>
       <h1>Languages</h1>
       Russian (fluent)<br>
@@ -71,7 +71,7 @@
       <a target="_blank" href="https://plus.google.com/u/0/104220186237319355155/posts">Google+</a><br>
     </div>
   </div>
-  <div class="span4">
+  <div class="col-md-5 col-md-offset-2">
     <div>
       <h1>Work experience</h1>
       <h3>PHP Developer</h3>
@@ -95,7 +95,7 @@
         August 2010 - September 2011. Moscow<br>
         I created and supported three ERP-like systems for Ministry of Health. 
 		Those are analytic systems with a lot of complicated queries and. 
-		And also some of them are OLAP-based.<br>
+		And also some of them were OLAP-based.<br>
         <span class="text-info">PHP + Oracle + IIS</span>
       <h3>PHP Developer</h3>
         M7 Software - a little company based on creating internet-shops and personal websites for clients<br>
@@ -108,10 +108,10 @@
       <h3>Robot Rock</h3>
         Novemder 2010 - June 2011.<br>
         My first Php + Canvas game. Main purpose was to learn Canvas and increase my PHP skills<br>
-        You can find animation demo and information at the link below <a href="<?=Helper::url('RobotRock')?>" >http://ilfate.net/RobotRock</a>
+        You can find animation demo and information at the page below <a href="<?=Helper::url('RobotRock')?>" >http://ilfate.net/RobotRock</a>
       <h3>Ilfate framework</h3>
         October 2012 - present.<br>
-        My PHP micro-framework. ilfate.net is created using this framework<br>
+        My PHP micro-framework. ilfate.net is created with this framework<br>
         Github project: <a target="_blank" href="https://github.com/ilfate/ilfate_php_engine" >http://github.com/ilfate/ilfate_php_engine</a>
     </div>
   </div>

@@ -104,11 +104,11 @@ body {
 
 
 /**** label-stars ****/
-.label-stars { min-width: 72px; text-align: center; }
+.label-stars { min-width: 72px; text-align: center; font-size: 100%; display: inline-block }
 
 .before-stars { display:none; position: absolute; margin: 2px 0 0 0; min-width: 72px; }
 
-.container-stars:hover .before-stars{ display:block; }
+.container-stars:hover .before-stars{ display:inline-block; }
 .container-stars { display:inline-block; }
 
 .star{ float:left; width: 12.5%; padding-left: 12.5%; height: 16px; margin: -1px 0 0 0; }

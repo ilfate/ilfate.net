@@ -58,7 +58,7 @@ $.fn.starred = function()
     var value = el.data('value');
     if(el.prev().hasClass('before-stars')) return ;
     el.before('<div class="container-stars"></div>')
-    .appendTo(el.prev()).before('<div class="before-stars label"></div>');
+    .appendTo(el.prev()).before('<div class="before-stars label label-default"></div>');
     
     el.prev().css({width: el.css('width'), height : el.css('height')});
     var star_div = '<div class="star"><div class="under-star"></div><div class="img-star"></div></div>';
