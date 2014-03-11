@@ -104,14 +104,14 @@ body {
 
 
 /**** label-stars ****/
-.label-stars { min-width: 72px; text-align: center; font-size: 100%; display: inline-block }
+.label-stars { min-width: 72px; text-align: center; font-size: 100%; display: inline-block; -moz-box-sizing: content-box; box-sizing: content-box }
 
-.before-stars { display:none; position: absolute; margin: 2px 0 0 0; min-width: 72px; }
+.before-stars { display:none; position: absolute; margin: 2px 0 0 0; min-width: 72px; -moz-box-sizing: content-box; box-sizing: content-box }
 
 .container-stars:hover .before-stars{ display:inline-block; }
 .container-stars { display:inline-block; }
 
-.star{ float:left; width: 12.5%; padding-left: 12.5%; height: 16px; margin: -1px 0 0 0; }
+.star{ float:left; width: 12.5%; padding-left: 12.5%; height: 16px; margin: -1px 0 0 0; -moz-box-sizing: content-box; box-sizing: content-box }
 .under-star { background-color: #F89406; width: 18px; height: inherit; position: absolute; margin: 0 0 0 -9px; /* 9px = half image width */ }
 .img-star { background-image: url('../images/star.png'); width: 18px; height: inherit; position: absolute; margin: 0 0 0 -9px; /* 9px = half image width */ }
 

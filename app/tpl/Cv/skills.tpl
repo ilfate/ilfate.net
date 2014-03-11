@@ -40,17 +40,17 @@
     <td><span class="label label-default label-stars" data-value="99">PHP</span></td>
     <td><span class="label label-default label-stars" data-value="85">Mysql</span></td>
     <td><span class="label label-default label-stars" data-value="78">JavaScript</span></td>
-    <td><span class="label label-default label-stars" data-value="70">SVN</span></td>
+    <td><span class="label label-default label-stars" data-value="70">Git</span></td>
     <td><span class="label label-default label-stars" data-value="65">Nginx</span></td>
     <td><span class="label label-default label-stars" data-value="90">Memcached</span></td>
   </tr>
   <tr>
     <td><span class="label label-default label-stars" data-value="16">Java</span></td>
-    <td><span class="label label-default label-stars" data-value="50">Oracle</span></td>
+    <td><span class="label label-default label-stars" data-value="35">Oracle</span></td>
     <td><span class="label label-default label-stars" data-value="75">CSS</span></td>
-    <td><span class="label label-default label-stars" data-value="60">Git</span></td>
+    <td><span class="label label-default label-stars" data-value="60">SVN</span></td>
     <td><span class="label label-default label-stars" data-value="45">Apache</span></td>
-    <td><span class="label label-default label-stars" data-value="70">PHPUnit</span></td>
+    <td><span class="label label-default label-stars" data-value="95">PHPUnit</span></td>
   </tr>
   <tr>
     <td></td>
