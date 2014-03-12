@@ -68,7 +68,7 @@ class Controller_Auth extends Controller
       'actions' => array('Action.refresh'),
     );
   }
-  
+
   public function signIn()
   {
     $config = array(
