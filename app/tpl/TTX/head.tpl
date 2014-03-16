@@ -6,8 +6,9 @@
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css" media="screen" >
   <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.min.css" type="text/css" media="screen" >
   
-  <link rel="stylesheet" href="/css/main.css" type="text/css" />
-  
+
+  <link rel="stylesheet" href="/css/TTX.css" type="text/css" />
+
 <!--  <link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css"> 
   <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">-->
   
@@ -24,8 +25,6 @@
   
   <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
   <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="/js/easeljs-0.5.0.min.js"></script>
-  <script type="text/javascript" src="/js/preloadjs-0.2.0.min.js"></script>
   
 <!--  <script type="text/javascript" src="/js/bootstrap-image-gallery.min.js"></script>
   <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>-->
@@ -37,9 +36,8 @@
   <script type="text/javascript" src="/js/modal.js"></script>
   <script type="text/javascript" src="/js/form.js"></script>
   <script type="text/javascript" src="/js/pages.js"></script>
-  
-  <script type="text/javascript" src="/js/canvasGame.js"></script>
-  
+  <script type="text/javascript" src="/js/TTX/Game.js"></script>
+
   
   
   <?= $content ?>
