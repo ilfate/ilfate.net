@@ -36,7 +36,7 @@
   <script type="text/javascript" src="/js/modal.js"></script>
   <script type="text/javascript" src="/js/form.js"></script>
   <script type="text/javascript" src="/js/pages.js"></script>
-  <script type="text/javascript" src="/js/TTX/Ship.js"></script>
+  <script type="text/javascript" src="/js/TTX/Ship2.js"></script>
   <script type="text/javascript" src="/js/TTX/Game.js"></script>
 
   

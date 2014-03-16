@@ -124,9 +124,11 @@ var Action = function(key, game)
     switch (this.key) {
       case 'open_solar_battery' :
         this.game.activateAction('close_solar_battery');
+        this.game.ship.activateSystem('solar_batteries');
         break;
       case 'close_solar_battery' :
         this.game.activateAction('open_solar_battery');
+        this.game.ship.deactivateSystem('solar_batteries');
         break;
       default :
         error('no afterRun for "' + this.key + '"');
@@ -168,13 +170,19 @@ var Game = function()
       info('New game init');
       this.newGame();
     }
+    setInterval(jQuery.proxy(this, 'tik'), 1000);
   }
 
   this.newGame = function()
   {
     // Set up new game screen
-    this.ship.activateSystem('solar_batteries');
+    this.ship.init();
     this.activateAction('open_solar_battery');
+  }
+
+  this.tik = function()
+  {
+    this.ship.tik();
   }
 
   this.getAction = function(key)
