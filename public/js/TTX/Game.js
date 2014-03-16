@@ -68,40 +68,16 @@ var message = function(text, selector, lengthPrinted) {
 //    message($(selector).html(), selector, 0);
 //}
 
-var System = function(systemKey, ship)
-{
-  this.ship = ship;
-  this.systemKey = systemKey;
-}
 
-var Ship = function(game)
-{
-  this.game = game;
-  this.systems = {};
 
-  this.init = function()
-  {
-
-  }
-
-  this.getSystem = function(systemKey)
-  {
-    if (!this.systems[systemKey]) {
-      error('There is no system ' + systemKey + ' on the ship.');
-      return false;
-    }
-    return this.systems[systemKey];
-  }
-}
-
-var Action = function(key, type, game)
+var Action = function(key, game)
 {
   this.game = game;
   this.key = key;
   this.active = false;
   this.config = {
-    'open_solar_battery': ['ship'],
-    'close_solar_battery': ['ship']
+    'open_solar_battery': ['ship', 1000],
+    'close_solar_battery': ['ship', 1000]
   };
 
   if (!this.config[key]) {
@@ -112,31 +88,69 @@ var Action = function(key, type, game)
   this.el.attr('id', key);
   this.el.html(t(key))
   $('#' + this.config[key][0] + ' .actions').append(this.el);
+  this.el.addClass('hide');
+
+  this.init = function() {
+    this.el.bind('click', jQuery.proxy(this, 'run'));
+  }
 
   this.run = function()
   {
-    if (!this.active) {
-      error('some one tries to run disabled action "' + key + '". We should report this. Yes we totally do! Report sent! Hackers well be found and punished! They definitely will be!');
+    if (!this.runCheck()) {
       return false;
     }
-    switch (key) {
+    this.beforeRun();
+    setTimeout(jQuery.proxy(this, 'afterRun'), this.config[this.key][1]);
+    info('Run action "' + this.key + '"');
+  }
+
+  this.beforeRun = function()
+  {
+    switch (this.key) {
       case 'open_solar_battery' :
-        this.game.activateAction('close_solar_battery');
         this.game.deactivateAction('open_solar_battery');
         break;
       case 'close_solar_battery' :
-        this.game.activateAction('open_solar_battery');
         this.game.deactivateAction('close_solar_battery');
+      break;
+      default :
+        error('no beforeRun for "' + this.key + '"');
         break;
     }
+  }
+
+  this.afterRun = function()
+  {
+    switch (this.key) {
+      case 'open_solar_battery' :
+        this.game.activateAction('close_solar_battery');
+        break;
+      case 'close_solar_battery' :
+        this.game.activateAction('open_solar_battery');
+        break;
+      default :
+        error('no afterRun for "' + this.key + '"');
+        break;
+    }
+  }
+
+  this.runCheck = function()
+  {
+    if (!this.active) {
+      error('some one tries to run disabled action "' + this.key + '". We should report this. Yes we totally do! Report sent! Hackers well be found and punished! They definitely will be!');
+      return false;
+    }
+    return true;
   }
 
   this.activate = function()
   {
+    this.el.removeClass('hide');
     this.active = true;
   }
   this.deactivate = function()
   {
+    this.el.addClass('hide');
     this.active = false;
   }
 }
@@ -144,12 +158,14 @@ var Action = function(key, type, game)
 var Game = function()
 {
   this.actions = {};
+  this.ship = new Ship(this);
 
   this.init = function() {
     var savedData = $('#savedGame').val();
     if (savedData) {
       this.load(savedData);
     } else {
+      info('New game init');
       this.newGame();
     }
   }
@@ -157,7 +173,8 @@ var Game = function()
   this.newGame = function()
   {
     // Set up new game screen
-    this.activateAction('open_solar_battery')
+    this.ship.activateSystem('solar_batteries');
+    this.activateAction('open_solar_battery');
   }
 
   this.getAction = function(key)
@@ -171,8 +188,10 @@ var Game = function()
 
   this.activateAction = function(key)
   {
+    info('Activate action "' + key + '"');
     if (!this.actions[key]) {
       this.actions[key] = new Action(key, this);
+      this.actions[key].init();
     }
     this.actions[key].activate();
   }
@@ -193,7 +212,8 @@ var Game = function()
   }
 }
 
-$(document).ready(function(){
+$(document).ready(function()
+{
   var game = new Game();
   game.init();
 });
