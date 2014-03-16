@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.min.css" type="text/css" media="screen" >
   
 
-  <link rel="stylesheet" href="/css/TTX.css" type="text/css" />
+  <link rel="stylesheet" href="/css/TTX/style.css" type="text/css" />
 
 <!--  <link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css"> 
   <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">-->
@@ -36,6 +36,7 @@
   <script type="text/javascript" src="/js/modal.js"></script>
   <script type="text/javascript" src="/js/form.js"></script>
   <script type="text/javascript" src="/js/pages.js"></script>
+  <script type="text/javascript" src="/js/TTX/Ship.js"></script>
   <script type="text/javascript" src="/js/TTX/Game.js"></script>
 
   
