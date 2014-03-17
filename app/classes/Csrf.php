@@ -58,6 +58,8 @@ class Csrf
     /**
      * Checs request for CSRF-attack
      *
+     * @throws CoreException_Error
+     *
      * @return bool
      */
     public static function check()
