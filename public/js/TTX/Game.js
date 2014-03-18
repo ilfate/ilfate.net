@@ -178,6 +178,7 @@ var Game = function () {
     this.actions = {};
     this.ship = new Ship(this);
     this.events = new GameEvents(this);
+    this.step = 0;
 
     this.init = function () {
         var savedData = $('#savedGame').val();
@@ -196,7 +197,7 @@ var Game = function () {
         this.activateAction('open_solar_battery');
         this.activateAction('diagnostic');
 
-        this.events.step = 1;
+        this.step = 1;
     }
 
     this.tik = function () {
@@ -239,10 +240,9 @@ var Game = function () {
 var GameEvents = function(game)
 {
     this.game = game;
-    this.step = 0;
 
     this.check = function() {
-        switch(this.step) {
+        switch(this.game.step) {
             case 1 :
 
             break;

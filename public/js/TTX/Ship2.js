@@ -9,6 +9,8 @@ var Ship = function (game) {
             this.installSystem('solar_batteries');
             this.installSystem('RTG'); //Radioisotope thermoelectric generator
             this.installSystem('TTX-800');
+            this.installSystem('star_tracker'); // Звёздный датчик
+
             this.energy.limit = 5000;
             this.energy.current = 250;
         }
@@ -64,13 +66,14 @@ var Ship = function (game) {
 
 var System = function (systemKey, ship) {
     this.ship = ship;
-    this.systemKey = systemKey;
+    this.key = systemKey;
     this.active = false;
     this.energyOutcome = 0;
     this.energyIncome = 0;
+    this.problems = {};
 
     this.install = function () {
-        switch (this.systemKey) {
+        switch (this.key) {
             case 'solar_batteries' :
                 this.energyIncome = 20;
                 break;
@@ -87,7 +90,7 @@ var System = function (systemKey, ship) {
                 this.energyOutcome = 50;
                 break;
             default :
-                error('System ' + this.systemKey + ' is do not have install action');
+                error('System ' + this.key + ' is do not have install action');
                 break;
         }
     }
@@ -109,6 +112,13 @@ var System = function (systemKey, ship) {
         this.active = false;
         this.ship.energy.income -= this.energyIncome;
         this.ship.energy.outcome -= this.energyOutcome;
+    }
+    this.addProblem = function(key)
+    {
+        if (this.problems[key]) {
+            error('we cant have two same problems "' + key + '" in one system "' + this.key + '"');
+        }
+        this.problems[key] = new Problem(key, this);
     }
 }
 
@@ -142,9 +152,11 @@ var Energy = function (ship) {
     }
 }
 
-var Problem = function (ship, key) {
-    this.ship = ship;
+var Problem = function (key, system) {
     this.key  = key;
+    this.system = system;
+    this.needDiagnostic = true;
+
 
 
 }
