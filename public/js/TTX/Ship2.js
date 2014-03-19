@@ -7,9 +7,10 @@ var Ship = function (game) {
         if (!data) {
             // it is a new game
             this.installSystem('solar_batteries');
+            this.installSystem('life_support_system');
             this.installSystem('RTG'); //Radioisotope thermoelectric generator
             this.installSystem('TTX-800');
-            this.installSystem('star_tracker'); // Звёздный датчик
+            this.installSystem('star_tracker', ['st_wrong_stars']); // Звёздный датчик
 
             this.energy.limit = 5000;
             this.energy.current = 250;
@@ -18,6 +19,12 @@ var Ship = function (game) {
 
     this.tik = function () {
         this.energy.tik();
+
+        if (!this.isActiveSystem('life_support_system')) {
+            for(var i in this.game.mortals) {
+                this.game.mortals[i].damage(2);
+            }
+        }
     }
 
     this.getSystem = function (systemKey) {
@@ -42,9 +49,14 @@ var Ship = function (game) {
         return false;
     }
 
-    this.installSystem = function (key) {
+    this.installSystem = function (key, problems) {
         this.systems[key] = new System(key, this);
         this.systems[key].install();
+        if (problems) {
+            for(var i in problems) {
+                this.systems.addProblem(problems[i]);
+            }
+        }
     }
 
     this.activateSystem = function (key) {
@@ -60,6 +72,39 @@ var Ship = function (game) {
     this.systemsShutDown = function () {
         for (var key in this.systems) {
             this.deactivateSystem(key);
+        }
+    }
+
+    this.diagnosticDone = function(key) // key is not mandatory
+    {
+        for (var sysKey in this.systems) {
+            if (this.systems[sysKey].problems) {
+                for (var problemKey in this.systems[sysKey].problems) {
+                    if (key && key != problemKey) {
+                        continue;
+                    }
+                    this.systems[sysKey].problems[problemKey].diagnosticResult();
+                    return true;
+                }
+                break;
+            }
+        }
+        info('no problem was diagnosed... Sad but true.');
+    }
+
+    this.solveProblem = function(key) // key is not mandatory
+    {
+        for (var sysKey in this.systems) {
+            if (this.systems[sysKey].problems) {
+                for (var problemKey in this.systems[sysKey].problems) {
+                    if (key && key != problemKey) {
+                        continue;
+                    }
+                    this.systems[sysKey].problems[problemKey].solve();
+                    break;
+                }
+                break;
+            }
         }
     }
 }
@@ -155,8 +200,33 @@ var Energy = function (ship) {
 var Problem = function (key, system) {
     this.key  = key;
     this.system = system;
-    this.needDiagnostic = true;
 
+    switch (this.key) {
+        case 'st_wrong_stars':
+            var needDiagnostic = true;
+        break;
+        default :
+            var needDiagnostic = true;
+        break;
+    }
+    this.needDiagnostic = needDiagnostic;
 
+    this.diagnosticResult = function()
+    {
+        switch (this.key) {
+            case 'st_wrong_stars':
+                info('Looks like this system is running perfectly.');
+                this.system.ship.game.activateAction('reprogram_star_tracker');
+                break;
+            default :
+                break;
+        }
+
+    }
+
+    this.solve = function()
+    {
+
+    }
 
 }

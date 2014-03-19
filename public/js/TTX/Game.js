@@ -74,7 +74,8 @@ var Action = function (key, game) {
     this.config = {
         'open_solar_battery': ['ship', 1000],
         'close_solar_battery': ['ship', 1000],
-        'diagnostic': ['ship', 5000, {'e':300}]
+        'diagnostic': ['ship', 5000, {'e':300}],
+        'reprogram_star_tracker': ['ship', 10000, {'e':200}]
     };
 
     if (!this.config[key]) {
@@ -109,7 +110,6 @@ var Action = function (key, game) {
                 this.game.deactivateAction('close_solar_battery');
                 break;
             case 'diagnostic' :
-                this.game.deactivateAction('diagnostic');
                 this.game.ship.activateSystem('TTX_diagnostic');
                 break;
             default :
@@ -134,6 +134,7 @@ var Action = function (key, game) {
                 if (this.game.ship.isActiveSystem('TTX_diagnostic')) {
                     info('diagnostic is done');
                     this.game.ship.deactivateSystem('TTX_diagnostic');
+                    this.game.ship.diagnosticDone();
                 }
                 break;
             default :
@@ -151,7 +152,13 @@ var Action = function (key, game) {
             for(var currency in this.config[this.key][2]) {
                 switch (currency) {
                     case 'e':
-                        if (this.game.ship.energy.current < this.config[this.key][2][currency]) {
+                        // here we are checking is there enough energy to run this action
+                        var time = (this.config[this.key][1] / 1000); // time in seconds
+                        if (
+                            this.game.ship.energy.current + ((this.game.ship.energy.income - this.game.ship.energy.outcome) * time)
+                            < (this.config[this.key][2][currency])
+                            ) {
+                            info('You dont have enough energy for this action');
                             return false;
                         }
                     break;
@@ -178,6 +185,7 @@ var Game = function () {
     this.actions = {};
     this.ship = new Ship(this);
     this.events = new GameEvents(this);
+    this.mortals = [];
     this.step = 0;
 
     this.init = function () {
@@ -196,6 +204,8 @@ var Game = function () {
         this.ship.init();
         this.activateAction('open_solar_battery');
         this.activateAction('diagnostic');
+
+        this.mortals.push(new Mortal('human', 'Capitan Jey Jones'));
 
         this.step = 1;
     }
@@ -252,6 +262,17 @@ var GameEvents = function(game)
             break;
         }
     }
+}
+
+var Mortal = function(race, name) {
+    this.race = race;
+    this.name = name;
+    this.skills = {};
+    this.status = '';
+    this.health = 100;
+    this.sanity = 100; // :)
+
+
 }
 
 
