@@ -10,6 +10,7 @@ var Ship = function (game) {
             this.installSystem('life_support_system');
             this.installSystem('RTG'); //Radioisotope thermoelectric generator
             this.installSystem('TTX-800');
+            this.installSystem('probe-port');
             this.installSystem('star_tracker', ['st_wrong_stars']); // Звёздный датчик
 
             this.energy.limit = 5000;
@@ -21,8 +22,10 @@ var Ship = function (game) {
         this.energy.tik();
 
         if (!this.isActiveSystem('life_support_system')) {
+            // damage humans!!
             for(var i in this.game.mortals) {
                 this.game.mortals[i].damage(2);
+                info('humans are dying')
             }
         }
     }
@@ -132,6 +135,9 @@ var System = function (systemKey, ship) {
                 this.energyOutcome = 1;
                 break;
             case 'TTX_diagnostic':
+                this.energyOutcome = 50;
+                break;
+            case 'probe-port':
                 this.energyOutcome = 50;
                 break;
             default :

@@ -186,6 +186,7 @@ var Game = function () {
     this.ship = new Ship(this);
     this.events = new GameEvents(this);
     this.mortals = [];
+    this.resourses = {};
     this.step = 0;
 
     this.init = function () {
@@ -231,11 +232,29 @@ var Game = function () {
         }
         this.actions[key].activate();
     }
+
     this.deactivateAction = function (key) {
         if (!this.actions[key]) {
             this.actions[key] = new Action(key, this);
         }
         this.actions[key].deactivate();
+    }
+
+    this.addResouses = function(type, value)
+    {
+        if (!this.resourses[type]) {
+            this.resourses[type] = 0;
+        }
+        this.resourses[type] += value;
+    }
+
+    this.spendResouses = function(type, value)
+    {
+        if (!this.resourses[type] || this.resourses[type] < value) {
+            return false;
+        }
+        this.resourses[type] -= value;
+        return true;
     }
 
     /**
@@ -272,7 +291,14 @@ var Mortal = function(race, name) {
     this.health = 100;
     this.sanity = 100; // :)
 
-
+    this.damage = function(val)
+    {
+        this.health -= val;
+        if (this.health < 0) {
+            this.status = 'dead';
+            info(this.name + ' horribly dies');
+        }
+    }
 }
 
 
