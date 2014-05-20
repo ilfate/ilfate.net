@@ -12,7 +12,8 @@
     <a href="http://ilfate.net">http://ilfate.net</a><br>
     ilfate@gmail.com<br>
     Skype: illidanfate<br>
-    Phone: +7 (905) 713-67-48<br>
+    Phone: +49 176 72166321<br>
+    Phone: +7 905 7136748<br>
   <a target="_blank" href="/Rubinchik_Ilya.pdf">Download CV</a>
   </div>
 </div>
@@ -33,12 +34,12 @@
       <h1 class="pull-left">Skills</h1> 
       <strong><a class="pull-left like-h1" href="<?=Helper::url('Cv', 'skills')?>">learn more</a></strong>
       <div class="clearfix"></div>
-      Languages: PHP, JavaScript, Java<br>
-      Web development: CSS, HTML5, Jquery, Bootstrap<br>
-      DB: MySql <span class="tip" rel="tooltip" title="Module for MySql to work with it like noSql database" >HandlerSocket</span> Sphinx, Oracle, Redis<br>
-      VCS: Svn, Git<br>
-      Frameworks: ZendFramework, Yii<br>
-      Other: Nginx, Memcached, PHPUnit, Behat, Selenium, Phing<br>
+      Languages: PHP, JavaScript, Ruby, Java<br>
+      Web development: CSS, HTML/XHTML, Jquery, Bootstrap<br>
+      DB: MySql, Solr, <span class="tip" rel="tooltip" title="Module for MySql to work with it like noSql database" >HandlerSocket</span>, Sphinx, Oracle, Redis<br>
+      VCS: Git, Svn<br>
+      Frameworks: Laravel, ZendFramework<br>
+      Other: PHPUnit, Nginx, Memcached, Behat, Selenium, Phing, Jira, Redmine, Scrum<br>
       <a href="<?=Helper::url('Cv', 'skills')?>">My skills table</a>
     </div>
     <div>
@@ -74,40 +75,38 @@
   <div class="col-md-5 col-md-offset-2">
     <div>
       <h1>Work experience</h1>
-      <h3>PHP Developer</h3>
-        <a target="_blank" href="http://www.professionali.ru">Professionali.ru</a> - a huge Russian social network for people in 
+      <h3>Backend PHP Developer</h3>
+        <a target="_blank" href="http://www.home24.de">Home24.de</a> - “Germany's biggest online furniture store”<br>
+        <b>April 2013 - present</b>. Berlin.<br>
+        I’m working in team of 10 developers to support and improve successful online store. I’m responsible for different parts of the project like: reclamation process, Erp tasks processor, feeds, delta solr indexing and ect. My duties also include bug fixes all over the project, improving performance, improving safety and refactoring old code.<br>
+        <span class="text-info">PHP + Mysql + Apache + Solr</span>
+        <h3>PHP Developer</h3>
+        <a target="_blank" href="http://www.professionali.ru">Professionali.ru</a> - a huge Russian social network for people in
 		professional occupations (like LinkedIn)<br>
-        August 2012 - present. Moscow<br>
-        I`m developing high load back-end in team of 16 developers. 
-		I`m responsible for network`s API, some of the network`s apps, creating and supporting different sections of network features, 
-		and testing and refactoring parts of core. I had covered the most important parts of core with Unit tests(PHPUnit).<br>
+        <b>August 2012 - February 2013</b>. Moscow.<br>
+        I was developing high load backend application in team of 16 developers. I was responsible for network`s API, some of the network`s apps, creating and supporting different sections of network features, and unitTesting and refactoring parts of project`s core. Here I had my first experience working with Scrum.<br>
         <span class="text-info">PHP + Mysql + Nginx</span>
       <h3>Leading Developer</h3>
-        <a target="_blank" href="http://www.ddestiny.ru">Destiny Devopment</a> - A GameDev company that specializes on Browser games<br> 
-        Septeber 2011 - August 2012. Moscow<br>
-        I was a leading developer on a browser game. 
-		I created whole project structure and developed most important parts of game logic. 
-		I was using MySql + HandlerSocket to improve query speed. 
-		I also took a great part in discussing and inventing game design.<br>
+        <a target="_blank" href="http://www.ddestiny.ru">Destiny Devopment</a> - A GameDev company that specializes in Browser games<br>
+        <b>Septeber 2011 - August 2012</b>. Moscow<br>
+        I was a leading developer in a small team on a browser game project. I created whole project structure and developed most important parts of game logic. I was using MySql + HandlerSocket to improve query speed. I also took a great part in discussing and inventing game design.<br>
         <span class="text-info">PHP + Mysql + Nginx</span>
       <h3>Leading Specialist (PHP)</h3>
         <a target="_blank" href="http://www.prognoz.ru">PROGNOZ</a> - A huge company that fills orders for government and banking<br>
-        August 2010 - September 2011. Moscow<br>
-        I created and supported three ERP-like systems for Ministry of Health. 
-		Those are analytic systems with a lot of complicated queries and. 
-		And also some of them were OLAP-based.<br>
+        <b>August 2010 - September 2011</b>. Moscow<br>
+        I was creating and supporting ERP-like systems ordered by Ministry of Health. Those are analytic systems with a lot of complicated real-time analytics and statistics. And also some of them was OLAP-based.<br>
         <span class="text-info">PHP + Oracle + IIS</span>
       <h3>PHP Developer</h3>
-        M7 Software - a little company based on creating internet-shops and personal websites for clients<br>
-        January 2009 - May 2010.(not full time job) Moscow<br>
-        I created sites based on company`s framework<br>
+        M7 Software - A little company that creating internet-shops and personal websites for clients<br>
+        <b>January 2009 - May 2010</b>.(part time job) Moscow<br>
+        I was creating sites based on company`s inner framework. This was a part time job where I learned PHP and everything about web development.<br>
         <span class="text-info">PHP + MySql + Apache</span>
     </div>
     <div>
       <h1>Personal Projects</h1>
       <h3>Robot Rock</h3>
         Novemder 2010 - June 2011.<br>
-        My first Php + Canvas game. Main purpose was to learn Canvas and increase my PHP skills<br>
+        My first Php + Canvas game. Main purpose of creating this game was to learn HTML5-Canvas and increase my PHP skills<br>
         You can find animation demo and information at the page below <a href="<?=Helper::url('RobotRock')?>" >http://ilfate.net/RobotRock</a>
       <h3>Ilfate framework</h3>
         October 2012 - present.<br>

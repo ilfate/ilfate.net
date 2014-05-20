@@ -40,21 +40,21 @@
     <td><span class="label label-default label-stars" data-value="99">PHP</span></td>
     <td><span class="label label-default label-stars" data-value="85">Mysql</span></td>
     <td><span class="label label-default label-stars" data-value="78">JavaScript</span></td>
-    <td><span class="label label-default label-stars" data-value="70">Git</span></td>
+    <td><span class="label label-default label-stars" data-value="75">Git</span></td>
     <td><span class="label label-default label-stars" data-value="65">Nginx</span></td>
-    <td><span class="label label-default label-stars" data-value="90">Memcached</span></td>
+    <td><span class="label label-default label-stars" data-value="99">PHPUnit</span></td>
   </tr>
   <tr>
-    <td><span class="label label-default label-stars" data-value="16">Java</span></td>
-    <td><span class="label label-default label-stars" data-value="35">Oracle</span></td>
-    <td><span class="label label-default label-stars" data-value="75">CSS</span></td>
-    <td><span class="label label-default label-stars" data-value="60">SVN</span></td>
+    <td><span class="label label-default label-stars" data-value="25">Ruby</span></td>
+    <td><span class="label label-default label-stars" data-value="15">Oracle</span></td>
+    <td><span class="label label-default label-stars" data-value="70">CSS</span></td>
+    <td><span class="label label-default label-stars" data-value="50">SVN</span></td>
     <td><span class="label label-default label-stars" data-value="45">Apache</span></td>
-    <td><span class="label label-default label-stars" data-value="95">PHPUnit</span></td>
+    <td><span class="label label-default label-stars" data-value="80">Scrum</span></td>
   </tr>
   <tr>
-    <td></td>
-    <td><span class="label label-default label-stars" data-value="45">HandlerSoket</span></td>
+    <td><span class="label label-default label-stars" data-value="10">Java</span></td>
+    <td><span class="label label-default label-stars" data-value="35">HandlerSoket</span></td>
     <td><span class="label label-default label-stars" data-value="90">Jquery</span></td>
     <td></td>
     <td><span class="label label-default label-stars" data-value="75">Ubuntu</span></td>
@@ -65,7 +65,7 @@
     <td><span class="label label-default label-stars" data-value="35">Spinx</span></td>
     <td><span class="label label-default label-stars" data-value="65">HTML5</span></td>
     <td></td>
-    <td></td>
+    <td><span class="label label-default label-stars" data-value="90">Memcached</span></td>
     <td><span class="label label-default label-stars" data-value="35">Behat</span></td>
   </tr>
   <tr>
@@ -79,7 +79,7 @@
   <tr>
     <td></td>
     <td></td>
-    <td><span class="label label-default label-stars" data-value="20">BackBone</span></td>
+    <td></td>
     <td></td>
     <td></td>
     <td><span class="label label-default label-stars" data-value="70">Photoshop</span></td>
